@@ -1,7 +1,7 @@
 baseURL = "https://example.org/"
 languageCode = "en-us"
 theme = "Tardigrade"
-title = "Tardigrade"
+title = "Water Bears"
 
 [menu]
   [[menu.main]]
