@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.141.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Tardigrade</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="http://localhost:1313/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="http://localhost:1313/"><h1>Tardigrade</h1></a>
+      <h3>Veni, Vidi, Coded.</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+      <div id="content">
+        
+	<main>
+		
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch_fundamentals_tensor/">
+    <h1 class="title">Pytorch fundamentals: Tensor</h1>
+    <h3 class="subtitle">PyTorch 104: Laying the Groundwork for ML</h3>
+  </a>
+  
+
+  
+  
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-19</time>
+    <span>in</span>
+    
+      <a href="/categories/pytorch">pyTorch</a>
+  </strong>
+
+  
+  <span> • 1 words</span>
+
+  
+  <span> • 1 minute read</span>
+
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/fundamentals">fundamentals</a>, 
+        <a href="/tags/tensors">tensors</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><p>A</p></p>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch_fundamentals_matrices/">
+    <h1 class="title">PyTorch fundamentals: Matrices</h1>
+    <h3 class="subtitle">PyTorch 103: Laying the Groundwork for ML</h3>
+  </a>
+  
+
+  
+  
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-19</time>
+    <span>in</span>
+    
+      <a href="/categories/pytorch">pyTorch</a>
+  </strong>
+
+  
+  <span> • 56 words</span>
+
+  
+  <span> • 1 minute read</span>
+
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/fundamentals">fundamentals</a>, 
+        <a href="/tags/matrices">matrices</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><p>A <strong>matrix</strong> has two dimensions, which means&hellip; yep, you guessed it, two square brackets!</p>
+<p>Now, Let&rsquo;s start by creating a matrix.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>MATRIX <span style="color:#f92672">=</span> torch.<span style="color:#a6e22e">tensor</span>([[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>],[<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]]) 
+</span></span><span style="display:flex;"><span>MATRIX
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">tensor</span>([[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]])
+</span></span></code></pre></div><p>Let&rsquo;s check its the <code>size</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>MATRIX.<span style="color:#a6e22e">size</span>()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>torch.<span style="color:#a6e22e">Size</span>([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>])
+</span></span></code></pre></div><p>The output <code>torch.Size([2, 2])</code> indicates that the matrix is two elements deep and two elements wide.</p></p>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch_fundamentals/">
+    <h1 class="title">PyTorch Fundamentals: Basics</h1>
+    <h3 class="subtitle">Importing PyTorch, creating tensors, and using ndim, item(), and size()</h3>
+  </a>
+  
+
+  
+  
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-18</time>
+    <span>in</span>
+    
+      <a href="/categories/pytorch">pyTorch</a>
+  </strong>
+
+  
+  <span> • 455 words</span>
+
+  
+  <span> • 7-11 minute read</span>
+
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/fundamentals">fundamentals</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><h2 id="importing-pytorch">Importing PyTorch</h2>
+<p>Let&rsquo;s start by importing PyTorch and checking the version we&rsquo;re using.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>import torch
+</span></span><span style="display:flex;"><span>torch.__version__
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ae81ff">2.5.1</span><span style="color:#f92672">+</span>cu121
+</span></span></code></pre></div><p>It looks like we&rsquo;ve got PyTorch 2.5.1+.</p>
+<h2 id="introduction-to-tensors">Introduction to Tensors</h2>
+<dl>
+<dt>Tensors are multi-dimensional arrays with a uniform type. In machine</dt>
+<dt>learning, the term tensor informally refers to two different concepts</dt>
+<dd><ol>
+<li>a way of organizing data,</li>
+<li>a multilinear (tensor)
+transformation. Data may be organized in a multidimensional array (M-way
+array).</li>
+</ol>
+</dd>
+</dl>
+<p>For example, you could represent an image as a tensor with shape
+<code>[3, 224, 224]</code> which could mean <code>[colour_channels, height, width]</code>.
+Thus, the tensor would have dimensions.</p></p>
+    
+      <a href="http://localhost:1313/posts/pytorch_fundamentals/">Read more...</a>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch_def_intro/">
+    <h1 class="title">What exactly is PyTorch ?</h1>
+    <h3 class="subtitle">PyTorch overview, key features, GPU support, and deep learning applications</h3>
+  </a>
+  
+
+  
+  
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-17</time>
+    <span>in</span>
+    
+      <a href="/categories/pytorch">pyTorch</a>
+  </strong>
+
+  
+  <span> • 203 words</span>
+
+  
+  <span> • 3-5 minute read</span>
+
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/intro">intro</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><p>PyTorch is an open-source deep learning framework that’s known for its flexibility and ease of use.
+This is enabled in part by its compatibility with the popular Python high-level programming language favored
+by machine learning developers and data scientists.</p>
+<p>PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s
+commonly used in applications like image recognition️ and language processing. Written in Python, it’s relatively
+easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs
+and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a
+popular choice for fast experimentation and prototyping.</p></p>
+    
+      <a href="http://localhost:1313/posts/pytorch_def_intro/">Read more...</a>
+    
+  </div>
+</article>
+		
+		<div>
+  
+  1 of 1
+  
+</div>
+	</main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2025
+    <strong>Tardigrade</strong>.
+  </p>
+</footer>
+    </div>
+  </body>
+</html>

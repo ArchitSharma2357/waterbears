@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Tardigrade</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Tardigrade</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Jan 2025 04:02:45 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytorch fundamentals: Tensor</title>
+      <link>http://localhost:1313/posts/pytorch_fundamentals_tensor/</link>
+      <pubDate>Sun, 19 Jan 2025 04:02:45 +0530</pubDate>
+      <guid>http://localhost:1313/posts/pytorch_fundamentals_tensor/</guid>
+      <description>&lt;p&gt;A&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PyTorch fundamentals: Matrices</title>
+      <link>http://localhost:1313/posts/pytorch_fundamentals_matrices/</link>
+      <pubDate>Sun, 19 Jan 2025 01:39:23 +0530</pubDate>
+      <guid>http://localhost:1313/posts/pytorch_fundamentals_matrices/</guid>
+      <description>&lt;p&gt;A &lt;strong&gt;matrix&lt;/strong&gt; has two dimensions, which means&amp;hellip; yep, you guessed it, two square brackets!&lt;/p&gt;&#xA;&lt;p&gt;Now, Let&amp;rsquo;s start by creating a matrix.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MATRIX &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; torch.&lt;span style=&#34;color:#a6e22e&#34;&gt;tensor&lt;/span&gt;([[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;],[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;]]) &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MATRIX&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;tensor&lt;/span&gt;([[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;],&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        [&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;]])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s check its the &lt;code&gt;size&lt;/code&gt; :&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MATRIX.&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;torch.&lt;span style=&#34;color:#a6e22e&#34;&gt;Size&lt;/span&gt;([&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The output &lt;code&gt;torch.Size([2, 2])&lt;/code&gt; indicates that the matrix is two elements deep and two elements wide.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PyTorch Fundamentals: Basics</title>
+      <link>http://localhost:1313/posts/pytorch_fundamentals/</link>
+      <pubDate>Sat, 18 Jan 2025 03:15:13 +0530</pubDate>
+      <guid>http://localhost:1313/posts/pytorch_fundamentals/</guid>
+      <description>&lt;h2 id=&#34;importing-pytorch&#34;&gt;Importing PyTorch&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s start by importing PyTorch and checking the version we&amp;rsquo;re using.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;import torch&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;torch.__version__&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2.5.1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;cu121&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It looks like we&amp;rsquo;ve got PyTorch 2.5.1+.&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction-to-tensors&#34;&gt;Introduction to Tensors&lt;/h2&gt;&#xA;&lt;dl&gt;&#xA;&lt;dt&gt;Tensors are multi-dimensional arrays with a uniform type. In machine&lt;/dt&gt;&#xA;&lt;dt&gt;learning, the term tensor informally refers to two different concepts&lt;/dt&gt;&#xA;&lt;dd&gt;&lt;ol&gt;&#xA;&lt;li&gt;a way of organizing data,&lt;/li&gt;&#xA;&lt;li&gt;a multilinear (tensor)&#xA;transformation. Data may be organized in a multidimensional array (M-way&#xA;array).&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/dd&gt;&#xA;&lt;/dl&gt;&#xA;&lt;p&gt;For example, you could represent an image as a tensor with shape&#xA;&lt;code&gt;[3, 224, 224]&lt;/code&gt; which could mean &lt;code&gt;[colour_channels, height, width]&lt;/code&gt;.&#xA;Thus, the tensor would have dimensions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What exactly is PyTorch ?</title>
+      <link>http://localhost:1313/posts/pytorch_def_intro/</link>
+      <pubDate>Fri, 17 Jan 2025 03:01:38 +0530</pubDate>
+      <guid>http://localhost:1313/posts/pytorch_def_intro/</guid>
+      <description>&lt;p&gt;PyTorch is an open-source deep learning framework that’s known for its flexibility and ease of use.&#xA;This is enabled in part by its compatibility with the popular Python high-level programming language favored&#xA;by machine learning developers and data scientists.&lt;/p&gt;&#xA;&lt;p&gt;PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s&#xA;commonly used in applications like image recognition️ and language processing. Written in Python, it’s relatively&#xA;easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs&#xA;and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a&#xA;popular choice for fast experimentation and prototyping.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
