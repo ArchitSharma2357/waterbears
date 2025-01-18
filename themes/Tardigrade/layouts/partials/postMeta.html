@@ -1,0 +1,51 @@
+{{/*
+  Calculate and display the reading time for this PyTorch tutorial.
+  The average human reading speed is assumed to be between 40-50 words per minute.
+*/}}
+{{ $duration := "" }}
+{{ $minSpeed := 40 }}  <!-- Assume minimum reading speed: 40 words per minute -->
+{{ $maxSpeed := 60 }}  <!-- Assume maximum reading speed: 50 words per minute -->
+
+<!-- Calculate the reading time based on the minimum and maximum reading speeds -->
+{{ $durationMin := math.Max 1 (div .WordCount $maxSpeed) }} <!-- Min reading time -->
+{{ $durationMax := math.Max 1 (div .WordCount $minSpeed) }} <!-- Max reading time -->
+
+<!-- Determine if the range is the same or display the range -->
+{{ $durationRange := cond
+  (eq $durationMin $durationMax)
+  $durationMin
+  (print $durationMin "-" $durationMax)
+}}
+
+<!-- Set the duration to the range or specific value -->
+{{ $duration = $durationRange }}
+
+<!-- Post meta section to display the reading time and other details -->
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time>
+    {{ with .Params.categories }}<span>in</span>{{ end }}
+    {{ range $key, $value := .Params.categories -}}
+      {{- if $key }}, {{ end }}
+      <a href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ . }}</a>
+    {{- end }}
+  </strong>
+
+  <!-- Display word count -->
+  {{ with .WordCount }}<span> • {{ . }} words</span>{{ end }}
+
+  <!-- Display calculated reading time -->
+  {{ with .ReadingTime}}<span> • {{ $duration }} minute read</span>{{ end }}
+
+  <!-- Display tags for further learning topics like "PyTorch", "Deep Learning" -->
+  {{ with .Params.tags }}
+    <div>
+      <span>Tags:</span>
+      {{ range $key, $value := . }}
+        {{- if $key }}, {{ end }}
+        <a href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}">{{ . }}</a>
+      {{- end }}
+    </div>
+  {{ end }}
+</div>
