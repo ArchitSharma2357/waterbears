@@ -1,0 +1,53 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+theme = "Tardigrade"
+title = "Tardigrade"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 3
+  [[menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories/"
+    weight = 4
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 5
+  [[menu.main]]
+    identifier = "rss"
+    name = "RSS"
+    url = "/index.xml"
+    weight = 6
+
+[params]
+  abbrDateFmt = "Jan 2"
+  author = "Tardigrade"
+  brandIconFile = "images/brandIcon.svg"
+  dateFmt = "2006-01-02"
+  # Uncomment to override theme or page defaults
+  # customStylesheets = ["css/custom.css"]
+  # readingSpeed = 600
+  # readingSpeedMin = 25
+  # readingSpeedMax = 175
+
+  [[params.social]]
+    name = "GitHub"
+    url = "https://github.com/ArchitSharma101"
+
+subtitle = ""
