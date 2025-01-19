@@ -152,6 +152,3 @@ sizeDim0.size(), sizeDim1.size(), sizeDim1_moreElements.size(), sizeDim2.size()
 (torch.Size([]), torch.Size([2]), torch.Size([2, 2]), torch.Size([1, 2]))
 
 ```
-
-
-
