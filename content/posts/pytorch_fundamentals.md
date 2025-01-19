@@ -30,9 +30,8 @@ It looks like we've got PyTorch 2.5.1+.
 
 ## Introduction to Tensors
 
-Tensors are multi-dimensional arrays with a uniform type. In machine
-learning, the term tensor informally refers to two different concepts
-: 1. a way of organizing data,
+**Tensors** are multi-dimensional arrays with a uniform type. In machinelearning, the term tensor informally refers to two different concepts:
+  1. a way of organizing data,
   2. a multilinear (tensor)
 transformation. Data may be organized in a multidimensional array (M-way
 array).
@@ -142,10 +141,10 @@ Another important attribute is [`size()`](https://pytorch.org/docs/stable/genera
 ```c
 sizeDim0 = torch.tensor(3)
 sizeDim1 = torch.tensor([3, 4])
-sizeDim1_moreElements = torch.tensor([[3, 4], [4, 5]]) /* It is a matrix, focus on size() for now */
+sizeDim2_moreElements = torch.tensor([[3, 4], [4, 5]]) /* It is a matrix, focus on size() for now */
 sizeDim2 = torch.tensor([[3, 4]])
 
-sizeDim0.size(), sizeDim1.size(), sizeDim1_moreElements.size(), sizeDim2.size()
+sizeDim0.size(), sizeDim1.size(), sizeDim2_moreElements.size(), sizeDim2.size()
 
 ```
 ```c
