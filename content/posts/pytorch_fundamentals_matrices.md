@@ -1,8 +1,8 @@
 ---
 date: '2025-01-19T01:39:23+05:30'
 draft: false
-title: 'PyTorch fundamentals: Matrices'
-subtitle: 'PyTorch 103: Laying the Groundwork for ML'
+title: 'PyTorch 02: Matrices'
+subtitle: 'Implementing matrix, and using size()'
 categories:
   - pyTorch
 math: true
