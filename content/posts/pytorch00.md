@@ -4,7 +4,7 @@ draft: false
 title: 'What exactly is PyTorch ?'
 subtitle: 'PyTorch overview, key features, GPU support, and deep learning applications'
 categories:
-  - pyTorch
+  - pyTorch Fundamentals
 math: true
 tags:
   - intro

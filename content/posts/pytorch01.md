@@ -3,7 +3,7 @@ date: '2025-01-18T03:15:13+05:30'
 title: 'PyTorch 01: Basics'
 subtitle: 'Importing PyTorch, creating tensors, and using ndim, item(), and size()'
 categories:
-  - pyTorch
+  - pyTorch Fundamentals
 math: true
 tags:
   - fundamentals
@@ -30,7 +30,9 @@ It looks like we've got PyTorch 2.5.1+.
 
 ## Introduction to Tensors
 
-**Tensors** are multi-dimensional arrays with a uniform type. In machinelearning, the term tensor informally refers to two different concepts:
+**Tensors** are multi-dimensional arrays with a uniform type. In machine
+learning, the term tensor informally refers to two different concepts
+:
   1. a way of organizing data,
   2. a multilinear (tensor)
 transformation. Data may be organized in a multidimensional array (M-way

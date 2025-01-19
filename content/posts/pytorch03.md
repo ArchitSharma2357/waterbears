@@ -4,7 +4,7 @@ draft: false
 title: 'Pytorch 03: Introduction to Tensors'
 subtitle: 'Implementing tensors (finally!)'
 categories:
-  - pyTorch
+  - pyTorch Fundamentals
 math: true
 tags:
   - fundamentals
