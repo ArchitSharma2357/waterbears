@@ -3,7 +3,7 @@
 
 Current feature(s):
 
-1. Few PyTorch Modules
+1. Few PyTorch Modules.
 
 Coming Soon:
 * More tutorials,
