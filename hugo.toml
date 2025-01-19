@@ -37,7 +37,7 @@ title = "WaterBears"
 
 [params]
   abbrDateFmt = "Jan 2"
-  author = "Tardigrade"
+  author = "WaterBears"
   brandIconFile = "images/brandIcon.svg"
   dateFmt = "2006-01-02"
   # Uncomment to override theme or page defaults
