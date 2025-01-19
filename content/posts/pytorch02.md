@@ -7,8 +7,8 @@ categories:
   - pyTorch Fundamentals
 math: true
 tags:
-  - fundamentals
   - matrices
+  - attributes
 editor_options: 
   markdown: 
     wrap: 72

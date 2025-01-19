@@ -7,8 +7,9 @@ categories:
   - pyTorch Fundamentals
 math: true
 tags:
-  - fundamentals
   - tensors
+  - attributes
+  - parameters
 editor_options: 
   markdown: 
     wrap: 72
