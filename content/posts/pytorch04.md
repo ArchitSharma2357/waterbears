@@ -38,6 +38,7 @@ or we can create a tensor :
 random_tensor = torch.rand(size = (1, 3, 3))
 random_tensor, random_tensor.dtype, random_tensor.size()
 ```
+
 ```c
 (tensor([[[0.2552, 0.3850, 0.0569],
           [0.3506, 0.9072, 0.4009],
