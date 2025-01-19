@@ -13,4 +13,15 @@ editor_options:
   markdown: 
     wrap: 72
 ---
-Abc
+
+How about we create a **tensor**?
+
+```c
+TENSOR = torch.tensor([[1, 2, 3
+                        3, 6, 9
+                        5, 4, 5]])
+```
+
+```c
+
+```
