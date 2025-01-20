@@ -4,7 +4,7 @@ draft: false
 title: 'Pytorch 04: Random Tensors'
 subtitle: 'Using torch.rand() and passing size() parameter'
 courses:
-  - pyTorch Fundamentals
+  - pyTorch
 math: true
 tags:
   - tensors

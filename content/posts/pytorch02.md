@@ -4,7 +4,7 @@ draft: false
 title: 'PyTorch 02: Matrices'
 subtitle: 'Implementing matrix, and using size()'
 courses:
-  - pyTorch Fundamentals
+  - pyTorch
 math: true
 tags:
   - matrices

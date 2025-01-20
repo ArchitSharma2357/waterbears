@@ -4,7 +4,7 @@ draft: false
 title: 'Pytorch 06: a range and tensors like'
 subtitle: 'Using torch.arange(), torch.zeros_like() and torch.ones_like() '
 courses:
-  - pyTorch Fundamentals
+  - pyTorch
 math: true
 tags:
   - tensors

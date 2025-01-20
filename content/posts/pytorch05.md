@@ -4,7 +4,7 @@ draft: false
 title: 'Pytorch 05: Zeros and Ones'
 subtitle: 'Using torch.zeros() and torch.ones()'
 courses:
-  - pyTorch Fundamentals
+  - pyTorch
 math: true
 tags:
   - tensors

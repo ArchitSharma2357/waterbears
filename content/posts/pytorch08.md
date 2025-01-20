@@ -4,7 +4,7 @@ draft: false
 title: 'Pytorch 08: NULL'
 subtitle: 'NULL'
 courses:
-  - pyTorch Fundamentals
+  - pyTorch
 math: true
 tags:
   - tensors

@@ -4,7 +4,7 @@ draft: false
 title: 'Pytorch 07: Data-types'
 subtitle: 'Exploring different pyTorch Data-types'
 courses:
-  - pyTorch Fundamentals
+  - pyTorch
 math: true
 tags:
   - tensors
