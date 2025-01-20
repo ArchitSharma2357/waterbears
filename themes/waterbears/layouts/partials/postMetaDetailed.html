@@ -8,9 +8,15 @@
       <a href="{{ "/courses/" | relLangURL }}{{ $value | urlize }}">{{ . }}</a>
     {{- end }}
   </strong>
-  {{ with .WordCount }}
-    <span> • {{ . }} words • {{ math.Ceil (div . 200) }} minute read</span>
+
+  {{ $content := .Content | plainify }}
+  {{ $wordCount := len (split $content " ") }}
+  {{ if gt $wordCount 0 }}
+    <span> • {{ $wordCount }} words • {{ math.Ceil (div $wordCount 200) }} minute read</span>
+  {{ else }}
+    <span> • No content available for reading time calculation</span>
   {{ end }}
+
   {{ if and .IsPage (ne .Date .Lastmod) }}
     <div>
       Last updated on
