@@ -13,7 +13,7 @@ editor_options:
     wrap: 72
 ---
 
-Sometimes you might want a range of numbers and for that you can use [`torch.arange(start, end, step`)](https://pytorch.org/docs/stable/generated/torch.arange.html):
+Sometimes you might want **a range of numbers** and for that you can use [`torch.arange(start, end, step`)](https://pytorch.org/docs/stable/generated/torch.arange.html):
 
 ```c
 # Create a range of numbers from 1 to 9 with a step of 1
@@ -28,7 +28,7 @@ tensor([1, 2, 3, 4, 5, 6, 7, 8, 9])
 torch.arange(1, 10, 1)
 ```
 
-Let's move on to another concept called tensor like. 
+Let's move on to another concept called **tensor like**. 
 
 Sometimes you might want a tensor full of zeros or ones with the same shape as some other tensor and to do so you can make use of [`torch.zeros_like(input)`](https://pytorch.org/docs/stable/generated/torch.zeros_like.html) or [`torch.ones_like(output)`](https://pytorch.org/docs/stable/generated/torch.zeros_like.html).
 

@@ -20,9 +20,9 @@ title = "WaterBears"
     url = "/posts/"
     weight = 3
   [[menu.main]]
-    identifier = "categories"
-    name = "Categories"
-    url = "/categories/"
+    identifier = "courses"
+    name = "Courses"
+    url = "/courses/"
     weight = 4
   [[menu.main]]
     identifier = "tags"
@@ -49,5 +49,9 @@ title = "WaterBears"
   [[params.social]]
     name = "GitHub"
     url = "https://github.com/WaterBear226"
+
+  [[params.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/archit226sharma/"
 
 subtitle = ""
