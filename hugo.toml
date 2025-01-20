@@ -1,6 +1,6 @@
 baseURL = "https://waterbears.in/"
 languageCode = "en-us"
-theme = "Tardigrade"
+theme = "waterbears"
 title = "WaterBears"
 
 [menu]
