@@ -1,6 +1,6 @@
 {{ define "main" }}
-  <main id="categories">
-    {{ with .Title }}<h1>{{ "Category: " }}{{ . }}</h1>{{ end }}
+  <main id="courses">
+    {{ with .Title }}<h1>{{ "Courses: " }}{{ . }}</h1>{{ end }}
     {{ partial "postsByDate.html" . }}
   </main>
 {{ end }}

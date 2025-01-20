@@ -2,10 +2,10 @@
   <strong>
     <span>Posted on</span>
     <time>{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time>
-    {{ with .Params.categories }}<span>in</span>{{ end }}
-    {{ range $key, $value := .Params.categories -}}
+    {{ with .Params.courses }}<span>in</span>{{ end }}
+    {{ range $key, $value := .Params.courses -}}
       {{- if $key }}, {{ end }}
-      <a href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ . }}</a>
+      <a href="{{ "/courses/" | relLangURL }}{{ $value | urlize }}">{{ . }}</a>
     {{- end }}
   </strong>
   {{ with .WordCount }}<span> • {{ . }} words</span>{{ end }}
