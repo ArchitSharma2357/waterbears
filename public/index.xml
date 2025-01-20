@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tardigrade</title>
+    <title>WaterBears</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on Tardigrade</description>
+    <description>Recent content on WaterBears</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 19 Jan 2025 04:02:45 +0530</lastBuildDate>
@@ -41,7 +41,7 @@
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;Hi, I’m a tardigrade—tiny but tough! I’ve mastered surviving extreme environments, and now I’m applying that resilience to the world of ML.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Hi, I’m a WaterBear but tough! I’ve mastered surviving extreme environments, and now I’m applying that resilience to the world of ML.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
