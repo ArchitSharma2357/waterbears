@@ -3,7 +3,7 @@ date: '2025-01-17T03:01:38+05:30'
 draft: false
 title: 'What exactly is PyTorch ?'
 subtitle: 'PyTorch overview, key features, GPU support, and deep learning applications'
-categories:
+courses:
   - pyTorch Fundamentals
 math: true
 tags:

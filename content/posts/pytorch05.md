@@ -3,7 +3,7 @@ date: '2025-01-20T03:33:00+05:30'
 draft: false
 title: 'Pytorch 05: Zeros and Ones'
 subtitle: 'Using torch.zeros() and torch.ones()'
-categories:
+courses:
   - pyTorch Fundamentals
 math: true
 tags:

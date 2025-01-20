@@ -3,7 +3,7 @@ date: '2025-01-19T04:02:45+05:30'
 draft: false
 title: 'Pytorch 03: Introduction to Tensors'
 subtitle: 'Implementing tensors (finally!)'
-categories:
+courses:
   - pyTorch Fundamentals
 math: true
 tags:
