@@ -9,8 +9,11 @@
     {{- end }}
   </strong>
 
-  {{ $content := .Content | plainify }}
-  {{ $wordCount := len (split $content " ") }}
+  {{ $content := .Content | plainify }} <!-- Strip HTML for word count -->
+  {{ $wordCount := len (split $content " ") }} <!-- Count words -->
+  <div>Word Count: {{ $wordCount }}</div> <!-- Debugging output -->
+  <div>Content: {{ $content }}</div> <!-- Debugging output -->
+  
   {{ if gt $wordCount 0 }}
     <span> • {{ $wordCount }} words • {{ math.Ceil (div $wordCount 200) }} minute read</span>
   {{ else }}
