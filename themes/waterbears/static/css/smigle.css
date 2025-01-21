@@ -82,3 +82,24 @@ div.post-meta {
   margin: 2px;
   padding: 8px;
 }
+
+/* Position login button to the top-right corner */
+.login-button-container {
+  position: absolute;
+  top: 10px; /* Adjust top margin */
+  right: 10px; /* Adjust right margin */
+}
+
+.login-button {
+  background-color: #007bff; /* Blue background */
+  color: white; /* Text color */
+  padding: 5px 10px; /* Adjust padding for a small button */
+  font-size: 14px; /* Adjust font size for smallness */
+  text-decoration: none;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for better visibility */
+}
+
+.login-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
