@@ -2,45 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/fundamentals/</loc>
-    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
-  </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
+    <lastmod>2025-01-21T02:40:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/pytorch/</loc>
-    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/pytorch_fundamentals_tensor/</loc>
-    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
+    <loc>http://localhost:1313/posts/pytorch08/</loc>
+    <lastmod>2025-01-21T02:40:00+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
+    <lastmod>2025-01-21T02:40:00+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/tensors/</loc>
+    <lastmod>2025-01-21T02:40:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-01-21T02:40:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pytorch07/</loc>
+    <lastmod>2025-01-21T02:22:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pytorch06/</loc>
+    <lastmod>2025-01-20T04:18:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/attributes/</loc>
+    <lastmod>2025-01-20T03:33:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pytorch05/</loc>
+    <lastmod>2025-01-20T03:33:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pytorch04/</loc>
+    <lastmod>2025-01-20T02:50:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/random-tensors/</loc>
+    <lastmod>2025-01-20T02:50:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/parameters/</loc>
+    <lastmod>2025-01-19T04:02:45+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pytorch03/</loc>
     <lastmod>2025-01-19T04:02:45+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/matrices/</loc>
     <lastmod>2025-01-19T01:39:23+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/pytorch_fundamentals_matrices/</loc>
+    <loc>http://localhost:1313/posts/pytorch02/</loc>
     <lastmod>2025-01-19T01:39:23+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/pytorch_fundamentals/</loc>
+    <loc>http://localhost:1313/posts/pytorch01/</loc>
     <lastmod>2025-01-18T03:15:13+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/intro/</loc>
     <lastmod>2025-01-17T03:01:38+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/pytorch_def_intro/</loc>
+    <loc>http://localhost:1313/posts/pytorch00/</loc>
     <lastmod>2025-01-17T03:01:38+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
   </url>
 </urlset>

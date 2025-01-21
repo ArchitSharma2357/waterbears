@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>PyTorch 02: Matrices | WaterBears</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="http://localhost:1313/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="http://localhost:1313/"><h1>WaterBears</h1></a>
+      <h3>Veni, Vidi, Coded.</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/courses/"><b>Courses</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+    
+  </nav>
+  <hr />
+  
+  
+  <div class="login-button-container">
+    <a href="/login-form.html/" class="login-button">Login</a>
+  </div>
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">PyTorch 02: Matrices</h1>
+      <h3 class="subtitle">Implementing matrix, and using size()</h3>
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-19</time>
+    <span>in</span>
+    
+      <a href="/courses/pytorch">pyTorch</a>
+  </strong>
+  <span> • 56 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/matrices">matrices</a>, 
+        <a href="/tags/attributes">attributes</a>
+    </div>
+  
+</div>
+      <div class="content"><p>A <strong>matrix</strong> has two dimensions, which means&hellip; yep, you guessed it, two square brackets!</p>
+<p>Now, Let&rsquo;s start by creating a matrix.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>MATRIX <span style="color:#f92672">=</span> torch.<span style="color:#a6e22e">tensor</span>([[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>],[<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]]) 
+</span></span><span style="display:flex;"><span>MATRIX
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">tensor</span>([[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]])
+</span></span></code></pre></div><p>Let&rsquo;s check its the <code>size</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>MATRIX.<span style="color:#a6e22e">size</span>()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>torch.<span style="color:#a6e22e">Size</span>([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>])
+</span></span></code></pre></div><p>The output <code>torch.Size([2, 2])</code> indicates that the matrix is two elements deep and two elements wide.</p>
+</div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+     <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/WaterBear226">GitHub</a>
+      
+         | 
+        <a href="https://www.linkedin.com/in/archit226sharma/">LinkedIn</a>
+      
+    </p>
+  
+  
+
+  <p class="copyright">
+    Copyright © 2025
+    <strong>WaterBears</strong>.
+  </p>
+</footer>
+    </div>
+  </body>
+</html>

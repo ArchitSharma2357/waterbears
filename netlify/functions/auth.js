@@ -1,34 +1,35 @@
-const bcrypt = require('bcrypt');
-
-// Example user database (replace with a real database)
+const bcrypt = require('bcrypt'); // Optional, if you want to hash passwords
 const users = [
-  { email: "user@example.com", passwordHash: bcrypt.hashSync("password123", 10) }
+  {
+    email: "user@example.com", // Example email
+    password: "password123",   // Example password (plaintext or hashed)
+  }
 ];
 
 exports.handler = async (event, context) => {
+  // Parse the request body (which will be a JSON object)
   const { email, password } = JSON.parse(event.body);
 
-  // Find user
-  const user = users.find((u) => u.email === email);
+  // Check if the email exists in the "database" (in this case, a simple array)
+  const user = users.find(user => user.email === email);
+
   if (!user) {
     return {
-      statusCode: 401,
-      body: JSON.stringify({ message: "User not found" }),
+      statusCode: 401, // Unauthorized
+      body: JSON.stringify({ message: "Invalid email or password" }),
     };
   }
 
-  // Validate password
-  const isValid = await bcrypt.compare(password, user.passwordHash);
-  if (!isValid) {
+  // If the password matches (if hashing, use bcrypt.compare() here)
+  if (user.password === password) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Login successful" }),
+    };
+  } else {
     return {
       statusCode: 401,
-      body: JSON.stringify({ message: "Invalid credentials" }),
+      body: JSON.stringify({ message: "Invalid email or password" }),
     };
   }
-
-  // Authentication successful
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: "Login successful" }),
-  };
 };

@@ -32,112 +32,310 @@
     <a class="icon-link" href="http://localhost:1313/">
       <img
         class="icon"
-        src="/images/brandIcon.svg"
-      />
+        src="/images/brandIcon.svg"/>
     </a>
     <div class="text">
       <a href="http://localhost:1313/"><h1>WaterBears</h1></a>
       <h3>Veni, Vidi, Coded.</h3>
     </div>
   </div>
+
   <nav>
     
       
         
-    <a href="/"><b>Home</b></a>
+        <a href="/"><b>Home</b></a>
       
-    | 
-   <a href="/courses/"><b>Courses</b></a>
- 
-    | 
-   <a href="/posts/"><b>Posts</b></a>
- 
-    | 
-    <a href="/tags/"><b>Tags</b></a>
- 
-    | 
-   <a href="/about/"><b>About</b></a>
+         | 
+        <a href="/courses/"><b>Courses</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
       
     
   </nav>
+
   <hr />
+
+
+<div class="login-button-container">
+  <a href="/login/" class="login-button">Login</a>
+</div>
+
+
+<div class="signup-button-container">
+  <a href="/signup/" class="signup-button">Sign Up</a> 
+</div>
+
 </header>
+
       <div id="content">
         
 	<main>
 		
 		
 			<article class="summary">
-  <a href="http://localhost:1313/posts/pytorch_fundamentals_tensor/">
-    <h1 class="title">Pytorch fundamentals: Tensor</h1>
-    <h3 class="subtitle">PyTorch 104: Laying the Groundwork for ML</h3>
+  <a href="http://localhost:1313/posts/pytorch08/">
+    <h1 class="title">Pytorch 08: NULL</h1>
+    <h3 class="subtitle">NULL</h3>
   </a>
   
 
+
+
+
+
+
+
+
+
   
-  
-
-
- 
- 
-
-
-
-
-
-
 
 
 <div class="post-meta">
   <strong>
     <span>Posted on</span>
-    <time>2025-01-19</time>
+    <time>2025-01-21</time>
     <span>in</span>
     
-      <a href="/categories/pytorch">pyTorch</a>
+      <a href="/courses/pytorch">pyTorch</a>
   </strong>
-
-  
-  <span> • 1 words</span>
-
-  
-  <span> • 1 minute read</span>
-
-  
+ <span> • 38 words</span>
+ <span> • 1 minute read</span>
   
     <div>
       <span>Tags:</span>
       
-        <a href="/tags/fundamentals">fundamentals</a>, 
         <a href="/tags/tensors">tensors</a>
     </div>
   
 </div>
   <div class="content">
-    <p><p>A</p></p>
+    <p><p>/*&quot;🚧 New Post in PyTorch Fundamentals Series Coming Soon! 🚧</p>
+<p>We&rsquo;re building something awesome for you! Stay tuned for the next post in our PyTorch series—getting ready to dive deeper into the fundamentals. Keep an eye out!&quot;
+*/</p></p>
     
   </div>
 </article>
 		
 			<article class="summary">
-  <a href="http://localhost:1313/posts/pytorch_fundamentals_matrices/">
-    <h1 class="title">PyTorch fundamentals: Matrices</h1>
-    <h3 class="subtitle">PyTorch 103: Laying the Groundwork for ML</h3>
+  <a href="http://localhost:1313/posts/pytorch07/">
+    <h1 class="title">Pytorch 07: Data-types</h1>
+    <h3 class="subtitle">Exploring different pyTorch Data-types</h3>
   </a>
   
 
-  
+
+
+
+
+
+
+
+
   
 
 
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-21</time>
+    <span>in</span>
+    
+      <a href="/courses/pytorch">pyTorch</a>
+  </strong>
  
  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/tensors">tensors</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p></p>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch06/">
+    <h1 class="title">Pytorch 06: a range and tensors like</h1>
+    <h3 class="subtitle">Using torch.arange(), torch.zeros_like() and torch.ones_like() </h3>
+  </a>
+  
 
 
 
 
 
 
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-20</time>
+    <span>in</span>
+    
+      <a href="/courses/pytorch">pyTorch</a>
+  </strong>
+ <span> • 163 words</span>
+ <span> • 3-5 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/tensors">tensors</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><p>Sometimes you might want <strong>a range of numbers</strong> and for that you can use <a href="https://pytorch.org/docs/stable/generated/torch.arange.html"><code>torch.arange(start, end, step</code>)</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e"># Create a range of numbers from 1 to 9 with a step of 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>range <span style="color:#f92672">=</span> torch.<span style="color:#a6e22e">arange</span>(start <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, end <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, step <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>range
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">tensor</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>])
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e"># You can simplify the call by omitting parameter names
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>torch.<span style="color:#a6e22e">arange</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p>Let&rsquo;s move on to another concept called <strong>tensor like</strong>.</p>
+<p>Sometimes you might want a tensor full of zeros or ones with the same shape as some other tensor and to do so you can make use of <a href="https://pytorch.org/docs/stable/generated/torch.zeros_like.html"><code>torch.zeros_like(input)</code></a> or <a href="https://pytorch.org/docs/stable/generated/torch.zeros_like.html"><code>torch.ones_like(output)</code></a>.</p></p>
+    
+      <a href="http://localhost:1313/posts/pytorch06/">Read more...</a>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch05/">
+    <h1 class="title">Pytorch 05: Zeros and Ones</h1>
+    <h3 class="subtitle">Using torch.zeros() and torch.ones()</h3>
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-20</time>
+    <span>in</span>
+    
+      <a href="/courses/pytorch">pyTorch</a>
+  </strong>
+ <span> • 153 words</span>
+ <span> • 3-5 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/tensors">tensors</a>, 
+        <a href="/tags/attributes">attributes</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><p>PyTorch provides two useful functions, <a href="https://pytorch.org/docs/stable/generated/torch.zeros.html"><code>torch.zeros</code></a> and <a href="https://pytorch.org/docs/stable/generated/torch.ones.html"><code>torch.ones</code></a>, to create tensors filled entirely with zeros or ones, respectively. These functions are commonly used for initializing tensors in machine learning and deep learning tasks.</p>
+<p>Zero initialization is primarily utilized for defining biases or placeholders in machine learning models, providing a neutral starting point that does not affect initial computations. Conversely, ones initialization is valuable in scaling operations or additive computations, offering consistency and ensuring predictable behavior during the process.</p></p>
+    
+      <a href="http://localhost:1313/posts/pytorch05/">Read more...</a>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch04/">
+    <h1 class="title">Pytorch 04: Random Tensors</h1>
+    <h3 class="subtitle">Using torch.rand() and passing size() parameter</h3>
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-20</time>
+    <span>in</span>
+    
+      <a href="/courses/pytorch">pyTorch</a>
+  </strong>
+ <span> • 155 words</span>
+ <span> • 3-5 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/tensors">tensors</a>, 
+        <a href="/tags/random-tensors">random tensors</a>, 
+        <a href="/tags/attributes">attributes</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><p><a href="https://pytorch.org/docs/stable/generated/torch.rand.html"><code>torch.rand</code></a> is a function in PyTorch used to generate a tensor filled with random numbers sampled from a uniform distribution over the interval [0, 1). It is useful when you need random values for initialization or stochastic processes <em>(discussed later)</em> in machine learning and deep learning applications.</p>
+<p>Let&rsquo;s create a matrix using <code>size()</code> parameter.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e"># creating a random tensor of size --&gt; (3, 3)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>random_matrix <span style="color:#f92672">=</span> torch.<span style="color:#a6e22e">rand</span>(size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>random_matrix, random_matrix.dtype, random_matrix.<span style="color:#a6e22e">size</span>()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>(<span style="color:#a6e22e">tensor</span>([[<span style="color:#ae81ff">0.6532</span>, <span style="color:#ae81ff">0.0823</span>, <span style="color:#ae81ff">0.4880</span>],
+</span></span><span style="display:flex;"><span>         [<span style="color:#ae81ff">0.3133</span>, <span style="color:#ae81ff">0.5036</span>, <span style="color:#ae81ff">0.1455</span>],
+</span></span><span style="display:flex;"><span>         [<span style="color:#ae81ff">0.7320</span>, <span style="color:#ae81ff">0.8213</span>, <span style="color:#ae81ff">0.5246</span>]]),
+</span></span><span style="display:flex;"><span> torch.float32,
+</span></span><span style="display:flex;"><span> torch.<span style="color:#a6e22e">Size</span>([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>]))
+</span></span></code></pre></div><p>or we can create a tensor :</p></p>
+    
+      <a href="http://localhost:1313/posts/pytorch04/">Read more...</a>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch03/">
+    <h1 class="title">Pytorch 03: Introduction to Tensors</h1>
+    <h3 class="subtitle">Implementing tensors (finally!)</h3>
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
 
 
 <div class="post-meta">
@@ -146,22 +344,75 @@
     <time>2025-01-19</time>
     <span>in</span>
     
-      <a href="/categories/pytorch">pyTorch</a>
+      <a href="/courses/pytorch">pyTorch</a>
   </strong>
-
-  
-  <span> • 56 words</span>
-
-  
-  <span> • 1 minute read</span>
-
-  
+ <span> • 54 words</span>
+ <span> • 1 minute read</span>
   
     <div>
       <span>Tags:</span>
       
-        <a href="/tags/fundamentals">fundamentals</a>, 
-        <a href="/tags/matrices">matrices</a>
+        <a href="/tags/tensors">tensors</a>, 
+        <a href="/tags/attributes">attributes</a>, 
+        <a href="/tags/parameters">parameters</a>
+    </div>
+  
+</div>
+  <div class="content">
+    <p><p>How about we create a <strong>tensor</strong>?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>TENSOR <span style="color:#f92672">=</span> torch.<span style="color:#a6e22e">tensor</span>([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]])
+</span></span><span style="display:flex;"><span>TENSOR
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">tensor</span>([[[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>         [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>],
+</span></span><span style="display:flex;"><span>         [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]]])
+</span></span></code></pre></div><p>That&rsquo;s nice! Tensors can be used to represent almost anything.</p>
+<p>What do you think <code>ndim</code> will give?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>TENSOR.ndim
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>And, what about <code>size()</code>?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>TENSOR.<span style="color:#a6e22e">size</span>()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>torch.<span style="color:#a6e22e">Size</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>])
+</span></span></code></pre></div></p>
+    
+  </div>
+</article>
+		
+			<article class="summary">
+  <a href="http://localhost:1313/posts/pytorch02/">
+    <h1 class="title">PyTorch 02: Matrices</h1>
+    <h3 class="subtitle">Implementing matrix, and using size()</h3>
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2025-01-19</time>
+    <span>in</span>
+    
+      <a href="/courses/pytorch">pyTorch</a>
+  </strong>
+ <span> • 56 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/matrices">matrices</a>, 
+        <a href="/tags/attributes">attributes</a>
     </div>
   
 </div>
@@ -181,24 +432,21 @@
 </article>
 		
 			<article class="summary">
-  <a href="http://localhost:1313/posts/pytorch_fundamentals/">
-    <h1 class="title">PyTorch Fundamentals: Basics</h1>
+  <a href="http://localhost:1313/posts/pytorch01/">
+    <h1 class="title">PyTorch 01: Basics</h1>
     <h3 class="subtitle">Importing PyTorch, creating tensors, and using ndim, item(), and size()</h3>
   </a>
   
 
+
+
+
+
+
+
+
+
   
-  
-
-
- 
- 
-
-
-
-
-
-
 
 
 <div class="post-meta">
@@ -207,21 +455,17 @@
     <time>2025-01-18</time>
     <span>in</span>
     
-      <a href="/categories/pytorch">pyTorch</a>
+      <a href="/courses/pytorch">pyTorch</a>
   </strong>
-
-  
-  <span> • 455 words</span>
-
-  
-  <span> • 7-11 minute read</span>
-
-  
+ <span> • 456 words</span>
+ <span> • 10-15 minute read</span>
   
     <div>
       <span>Tags:</span>
       
-        <a href="/tags/fundamentals">fundamentals</a>
+        <a href="/tags/tensors">tensors</a>, 
+        <a href="/tags/attributes">attributes</a>, 
+        <a href="/tags/parameters">parameters</a>
     </div>
   
 </div>
@@ -233,45 +477,40 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ae81ff">2.5.1</span><span style="color:#f92672">+</span>cu121
 </span></span></code></pre></div><p>It looks like we&rsquo;ve got PyTorch 2.5.1+.</p>
 <h2 id="introduction-to-tensors">Introduction to Tensors</h2>
-<dl>
-<dt>Tensors are multi-dimensional arrays with a uniform type. In machine</dt>
-<dt>learning, the term tensor informally refers to two different concepts</dt>
-<dd><ol>
+<p><strong>Tensors</strong> are multi-dimensional arrays with a uniform type. In machine
+learning, the term tensor informally refers to two different concepts
+:</p>
+<ol>
 <li>a way of organizing data,</li>
 <li>a multilinear (tensor)
 transformation. Data may be organized in a multidimensional array (M-way
 array).</li>
 </ol>
-</dd>
-</dl>
 <p>For example, you could represent an image as a tensor with shape
 <code>[3, 224, 224]</code> which could mean <code>[colour_channels, height, width]</code>.
 Thus, the tensor would have dimensions.</p></p>
     
-      <a href="http://localhost:1313/posts/pytorch_fundamentals/">Read more...</a>
+      <a href="http://localhost:1313/posts/pytorch01/">Read more...</a>
     
   </div>
 </article>
 		
 			<article class="summary">
-  <a href="http://localhost:1313/posts/pytorch_def_intro/">
+  <a href="http://localhost:1313/posts/pytorch00/">
     <h1 class="title">What exactly is PyTorch ?</h1>
     <h3 class="subtitle">PyTorch overview, key features, GPU support, and deep learning applications</h3>
   </a>
   
 
+
+
+
+
+
+
+
+
   
-  
-
-
- 
- 
-
-
-
-
-
-
 
 
 <div class="post-meta">
@@ -280,16 +519,10 @@ Thus, the tensor would have dimensions.</p></p>
     <time>2025-01-17</time>
     <span>in</span>
     
-      <a href="/categories/pytorch">pyTorch</a>
+      <a href="/courses/pytorch">pyTorch</a>
   </strong>
-
-  
-  <span> • 203 words</span>
-
-  
-  <span> • 3-5 minute read</span>
-
-  
+ <span> • 203 words</span>
+ <span> • 4-6 minute read</span>
   
     <div>
       <span>Tags:</span>
@@ -308,7 +541,7 @@ easy for most machine learning developers to learn and use. PyTorch is distincti
 and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a
 popular choice for fast experimentation and prototyping.</p></p>
     
-      <a href="http://localhost:1313/posts/pytorch_def_intro/">Read more...</a>
+      <a href="http://localhost:1313/posts/pytorch00/">Read more...</a>
     
   </div>
 </article>
@@ -324,6 +557,20 @@ popular choice for fast experimentation and prototyping.</p></p>
       <footer>
   <hr />
   
+     <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/WaterBear226">GitHub</a>
+      
+         | 
+        <a href="https://www.linkedin.com/in/archit226sharma/">LinkedIn</a>
+      
+    </p>
+  
+  
+
   <p class="copyright">
     Copyright © 2025
     <strong>WaterBears</strong>.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logins on WaterBears</title>
+    <link>http://localhost:1313/login/</link>
+    <description>Recent content in Logins on WaterBears</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/login/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/login/login-form/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/login/login-form/</guid>
+      <description>&lt;header&gt;&#xD;&#xA;    &lt;div id=&#34;brand&#34;&gt;&#xD;&#xA;      &lt;a class=&#34;icon-link&#34; href=&#34;{{ .Site.BaseURL }}&#34;&gt;&#xD;&#xA;        &lt;img&#xD;&#xA;          class=&#34;icon&#34;&#xD;&#xA;          src=&#34;{{ default &#34;images/brandIcon.svg&#34; .Site.Params.brandIconFile | relURL }}&#34;&#xD;&#xA;        /&gt;&#xD;&#xA;      &lt;/a&gt;&#xD;&#xA;      &lt;div class=&#34;text&#34;&gt;&#xD;&#xA;        &lt;a href=&#34;{{ .Site.BaseURL }}&#34;&gt;&lt;h1&gt;{{ .Site.Title }}&lt;/h1&gt;&lt;/a&gt;&#xD;&#xA;        &lt;h3&gt;{{ default &#34;Veni, Vidi, Coded.&#34; .Site.Params.subtitle }}&lt;/h3&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;nav&gt;&#xD;&#xA;      {{ with .Site.Menus.main }}&#xD;&#xA;        {{ range $index, $value := . }}&#xD;&#xA;          {{ if $index }} | {{ end }}&#xD;&#xA;          &lt;a href=&#34;{{ .URL | relURL }}&#34;&gt;&lt;b&gt;{{ .Name }}&lt;/b&gt;&lt;/a&gt;&#xD;&#xA;        {{ end }}&#xD;&#xA;      {{ end }}&#xD;&#xA;    &lt;/nav&gt;&#xD;&#xA;    &lt;hr /&gt;&#xD;&#xA;    &#xD;&#xA;    &lt;!-- Login Button (top right) --&gt;&#xD;&#xA;    &lt;div class=&#34;login-button-container&#34;&gt;&#xD;&#xA;      &lt;a href=&#34;http://localhost:1313/login/&#34; class=&#34;login-button&#34;&gt;Login&lt;/a&gt; &lt;!-- Link to login page --&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;  &lt;/header&gt;</description>
+    </item>
+  </channel>
+</rss>

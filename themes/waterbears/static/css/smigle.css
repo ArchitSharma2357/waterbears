@@ -83,23 +83,25 @@ div.post-meta {
   padding: 8px;
 }
 
-/* Position login button to the top-right corner */
-.login-button-container {
+/* Container to align buttons to the top-right */
+.login-button-container, .signup-button-container {
   position: absolute;
-  top: 10px; /* Adjust top margin */
-  right: 10px; /* Adjust right margin */
+  top: 10px;
+  right: 10px;
+  margin-left: 10px;
 }
 
-.login-button {
-  background-color: #007bff; /* Blue background */
-  color: white; /* Text color */
-  padding: 5px 10px; /* Adjust padding for a small button */
-  font-size: 14px; /* Adjust font size for smallness */
+/* Style for the Login button */
+.login-button, .signup-button {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
   text-decoration: none;
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for better visibility */
+  border-radius: 5px;
+  font-size: 14px;
 }
 
-.login-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.login-button:hover, .signup-button:hover {
+  background-color: #0056b3;
 }
