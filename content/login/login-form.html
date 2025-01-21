@@ -1,29 +1,12 @@
-<header>
-    <div id="brand">
-      <a class="icon-link" href="{{ .Site.BaseURL }}">
-        <img
-          class="icon"
-          src="{{ default "images/brandIcon.svg" .Site.Params.brandIconFile | relURL }}"
-        />
-      </a>
-      <div class="text">
-        <a href="{{ .Site.BaseURL }}"><h1>{{ .Site.Title }}</h1></a>
-        <h3>{{ default "Veni, Vidi, Coded." .Site.Params.subtitle }}</h3>
-      </div>
-    </div>
-    <nav>
-      {{ with .Site.Menus.main }}
-        {{ range $index, $value := . }}
-          {{ if $index }} | {{ end }}
-          <a href="{{ .URL | relURL }}"><b>{{ .Name }}</b></a>
-        {{ end }}
-      {{ end }}
-    </nav>
-    <hr />
-    
-    <!-- Login Button (top right) -->
-    <div class="login-button-container">
-      <a href="/login/" class="login-button">Login</a> <!-- Link to login page -->
-    </div>
-  </header>
-  
+<form id="signin-form">
+  <label for="email">Email:</label>
+  <input type="email" id="email" placeholder="Enter your email" required>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" placeholder="Enter your password" required>
+
+  <button type="submit">Sign In</button>
+</form>
+
+<!-- Script to handle Sign In -->
+<script src="/js/auth.js"></script>
