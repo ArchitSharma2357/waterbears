@@ -8,7 +8,6 @@ courses:
 math: true
 tags:
   - tensors
-  - workflow
 editor_options: 
   markdown: 
     wrap: 72
