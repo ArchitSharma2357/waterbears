@@ -75,20 +75,12 @@ torch.__version__
 
 I want to stress that **"data"** in machine learning can be almost anything you can imagine. A table of numbers (like a big Excel spreadsheet), images of any kind, videos (YouTube has lots of data!), audio files like songs or podcasts, protein structures, text, and more.
 
-Machine learning is a game of two parts:  
-1. Turn your data into a representative set of numbers.  
-2. Build or pick a model to learn the representation as best as possible.
-
----
-
 ### Machine Learning is a Game of Two Parts:
 
 1. **Turn your data, whatever it is, into numbers (a representation).**
 2. **Pick or build a model to learn the representation as best as possible.**
 
 Sometimes one and two can be done at the same time.
-
----
 
 #### What if You Don't Have Data?
 
@@ -98,8 +90,6 @@ Let's create our data as a straight line.
 We'll use **linear regression** to create the data with known parameters (things that can be learned by a model) and then use **PyTorch** to see if we can build a model to estimate these parameters using **gradient descent**.
 
 > Don't worry if the terms above don't mean much now. We'll see them in action, and I'll provide extra resources below where you can learn more.
-
----
 
 #### Create *Known* Parameters:
 
