@@ -51,9 +51,9 @@ Specifically, we will cover the following:
 
 Before building the model, we need to import the necessary libraries and packages.  
 
-1. **`torch`**: The core library for PyTorch, which provides tools for tensor operations and machine learning models.
-2. **`torch.nn`**: A submodule of PyTorch that contains the foundational building blocks for constructing neural networks.
-3. **`matplotlib.pyplot`**: A plotting library used for visualizing data and results.
+1. `torch`: The core library for PyTorch, which provides tools for tensor operations and machine learning models.
+2. [`torch.nn`](https://pytorch.org/docs/stable/nn.html): A submodule of PyTorch that contains the foundational building blocks for constructing neural networks.
+3. [`matplotlib.pyplot`](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html): A plotting library used for visualizing data and results.
 
 We'll also check the installed version of PyTorch to ensure compatibility.
 
@@ -67,6 +67,7 @@ import matplotlib.pyplot as plt
 torch.__version__
 ```
 
-```PYTHON       
+```PYTHON  
+# Output     
 2.5.1+cu121
 ```
