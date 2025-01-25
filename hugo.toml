@@ -44,9 +44,9 @@ title = "WaterBears"
   dateFmt = "2006-01-02"
   # Uncomment to override theme or page defaults
   # customStylesheets = ["css/custom.css"]
-  readingSpeed = 450
-  readingSpeedMin = 30
-  readingSpeedMax = 45
+  readingSpeed = 550
+  readingSpeedMin = 40
+  readingSpeedMax = 55
 
   [[params.social]]
     name = "GitHub"
