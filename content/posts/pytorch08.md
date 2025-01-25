@@ -141,13 +141,7 @@ We've got some data. But before we build a model, we need to split it up.
 
 One of the most important steps in a machine learning project is creating a **training** and **test set** (and, when required, a **validation set**).
 
-Each split of the dataset serves a specific purpose:
-
-| **Split**          | **Purpose**                                                        | **Amount of Total Data** | **Usage Frequency**       |
-|---------------------|--------------------------------------------------------------------|---------------------------|---------------------------|
-| **Training Set**    | The model learns from this data (like the course materials you study). | ~60-80%                   | Always                    |
-| **Validation Set**  | The model gets tuned on this data (like the practice exam).       | ~10-20%                   | Often but not always      |
-| **Testing Set**     | The model gets evaluated on this data to test what it has learned. | ~10-20%                   | Always                    |
+Each split of the dataset serves a specific purpose. The **training set**, comprising approximately 60-80% of the total data, is used for the model to learn, similar to studying course materials. The **validation set**, which typically constitutes about 10-20% of the data, is employed to tune the model, much like practicing with a mock exam; it is often used but not always. Finally, the **testing set**, also around 10-20% of the data, evaluates the model's performance to test what it has learned, and it is always utilized.
 
 For now, we'll just use a **training** and **test set**.  
 This means we'll have a dataset for our model to **learn on** as well as **be evaluated on**.
