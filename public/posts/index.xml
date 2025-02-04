@@ -9,13 +9,6 @@
     <lastBuildDate>Tue, 21 Jan 2025 02:40:00 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Pytorch 08: NULL</title>
-      <link>http://localhost:1313/posts/pytorch08/</link>
-      <pubDate>Tue, 21 Jan 2025 02:40:00 +0530</pubDate>
-      <guid>http://localhost:1313/posts/pytorch08/</guid>
-      <description>&lt;p&gt;/*&amp;quot;🚧 New Post in PyTorch Fundamentals Series Coming Soon! 🚧&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;re building something awesome for you! Stay tuned for the next post in our PyTorch series—getting ready to dive deeper into the fundamentals. Keep an eye out!&amp;quot;&#xA;*/&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Pytorch 07: Data-types</title>
       <link>http://localhost:1313/posts/pytorch07/</link>
       <pubDate>Tue, 21 Jan 2025 02:22:00 +0530</pubDate>
