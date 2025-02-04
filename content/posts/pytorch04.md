@@ -1,7 +1,7 @@
 ---
 date: '2025-02-03T02:50:00+05:30'
 draft: false
-title: 'Pytorch 04: Random Tensors'
+title: 'PyTorch 04: Random Tensors'
 subtitle: 'Using torch.rand() and passing size() parameter'
 courses:
   - pyTorch

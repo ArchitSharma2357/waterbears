@@ -1,7 +1,7 @@
 ---
 date: '2025-02-04T04:18:00+05:30'
 draft: false
-title: 'Pytorch 06: a range and tensors like'
+title: 'PyTorch 06: a range and tensors like'
 subtitle: 'Using torch.arange(), torch.zeros_like() and torch.ones_like() '
 courses:
   - pyTorch

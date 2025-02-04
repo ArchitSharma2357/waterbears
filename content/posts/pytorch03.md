@@ -1,7 +1,7 @@
 ---
 date: '2025-02-02T04:02:45+05:30'
 draft: false
-title: 'Pytorch 03: Introduction to Tensors'
+title: 'PyTorch 03: Introduction to Tensors'
 subtitle: 'Implementing tensors (finally!)'
 courses:
   - pyTorch
