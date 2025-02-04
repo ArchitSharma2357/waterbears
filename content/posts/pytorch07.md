@@ -1,6 +1,6 @@
 ---
 date: '2025-01-21T02:22:00+05:30'
-draft: false
+draft: true
 title: 'Pytorch 07: Data-types'
 subtitle: 'Exploring different pyTorch Data-types'
 courses:

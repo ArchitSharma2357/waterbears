@@ -1,5 +1,5 @@
 ---
-date: '2025-01-24T07:23:00+05:30'
+date: '2025-02-06T07:23:00+05:30'
 draft: false
 title: 'Pytorch N: Workflow Fundamentals'
 subtitle: 'NULL'

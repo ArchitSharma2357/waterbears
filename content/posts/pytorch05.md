@@ -1,5 +1,5 @@
 ---
-date: '2025-01-20T03:33:00+05:30'
+date: '2025-02-04T03:33:00+05:30'
 draft: false
 title: 'Pytorch 05: Zeros and Ones'
 subtitle: 'Using torch.zeros() and torch.ones()'

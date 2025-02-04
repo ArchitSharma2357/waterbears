@@ -1,5 +1,5 @@
 ---
-date: '2025-01-18T03:15:13+05:30'
+date: '2025-01-31T03:15:13+05:30'
 title: 'PyTorch 01: Basics'
 subtitle: 'Importing PyTorch, creating tensors, and using ndim, item(), and size()'
 courses:

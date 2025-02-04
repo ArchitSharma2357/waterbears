@@ -1,6 +1,6 @@
 ---
 date: '2025-01-24T07:23:00+05:30'
-draft: false
+draft: true
 title: 'Pytorch N: NULL'
 subtitle: 'NULL'
 courses:

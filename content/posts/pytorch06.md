@@ -1,5 +1,5 @@
 ---
-date: '2025-01-20T04:18:00+05:30'
+date: '2025-02-05T04:18:00+05:30'
 draft: false
 title: 'Pytorch 06: a range and tensors like'
 subtitle: 'Using torch.arange(), torch.zeros_like() and torch.ones_like() '

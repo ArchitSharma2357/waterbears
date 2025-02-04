@@ -1,5 +1,5 @@
 ---
-date: '2025-01-20T02:50:00+05:30'
+date: '2025-02-03T02:50:00+05:30'
 draft: false
 title: 'Pytorch 04: Random Tensors'
 subtitle: 'Using torch.rand() and passing size() parameter'
