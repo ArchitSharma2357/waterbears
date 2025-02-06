@@ -1,0 +1,22 @@
+<form id="codeForm">
+    <label for="language">Choose a language:</label>
+    <select id="language">
+        <option value="54">C++</option>
+        <option value="50">C</option>
+        <option value="62">Java</option>
+        <option value="71">Python</option>
+    </select>
+
+    <label for="code">Write your code:</label>
+    <textarea id="code" rows="10" cols="50"></textarea>
+
+    <label for="input">Test Input:</label>
+    <input type="text" id="input" placeholder="Optional input">
+
+    <button type="button" onclick="submitCode()">Run Code</button>
+</form>
+
+<p>Output:</p>
+<pre id="output"></pre>
+
+<script src="/js/judge0.js"></script>
