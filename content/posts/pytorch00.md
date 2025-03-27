@@ -10,7 +10,7 @@ tags:
   - intro
 ---
 
-PyTorch is an open-source deep learning framework that’s known for its flexibility and ease of use.
+PyTorch is an open-source deep learning framework that’s known for its flexibility and ease of use. 
 This is enabled in part by its compatibility with the popular Python high-level programming language favored
 by machine learning developers and data scientists.
 
