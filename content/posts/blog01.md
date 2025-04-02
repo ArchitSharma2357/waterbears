@@ -26,7 +26,12 @@ Imagine the thrill of watching a spacecraft launched from Earth, traveling milli
 
 ---
 
-<img src="public/images/kang.jpg" alt="Dr. Gagandeep Kang" width="500" style="display: block; margin: auto;">
+## **Dr. Gagandeep Kang – The Woman Who Shields Millions from Disease**
+<img src="public/images/kang.jpg" alt="Dr. Gagandeep Kang" style="width: 100%; max-width: 500px; display: block; margin: auto; border-radius: 10px;">
+
+<img src="ArchitSharma2357/waterbears/public/images/kang.jpg" alt="Dr. Gagandeep Kang" style="width: 100%; max-width: 500px; display: block; margin: auto; border-radius: 10px;">
+
+<img src="waterbears/public/images/kang.jpg" alt="Dr. Gagandeep Kang" style="width: 100%; max-width: 500px; display: block; margin: auto; border-radius: 10px;">
 
 For every child who laughs without the fear of deadly infections, we owe a debt to Dr. Gagandeep Kang. A pioneering microbiologist, she played a key role in developing the rotavirus vaccine, protecting millions from life-threatening diarrhea. Her expertise didn’t stop there—when the world was hit by COVID-19, she became a guiding voice, ensuring science led the way. Her work is a reminder that behind every vaccine is a scientist fighting to keep humanity safe.
 
