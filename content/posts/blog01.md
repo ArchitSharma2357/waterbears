@@ -20,7 +20,7 @@ Science isn’t just about equations and laboratories—it’s about people, the
 ---
 
 ## **Dr. K. Radhakrishnan – The Man Who Took India to Mars**
-![Dr. K. Radhakrishnan](https://en.wikipedia.org/wiki/File:K-Radhakrishnan-2014.jpg)
+![Dr. K. Radhakrishnan](https://i.ibb.co/sXMd6rz/kradhakrishnan.webp)
 
 Imagine the thrill of watching a spacecraft launched from Earth, traveling millions of kilometers, and finally reaching Mars—all on the first attempt. That’s exactly what happened with Mangalyaan, India’s Mars Orbiter Mission, and behind it stood Dr. K. Radhakrishnan. His vision and leadership turned what seemed like an impossible dream into a historic achievement, making India the first country to reach Mars in its maiden attempt. More than a mission, it was a statement to the world: India is here to explore the cosmos.
 
@@ -34,21 +34,21 @@ For every child who laughs without the fear of deadly infections, we owe a debt 
 ---
 
 ## **Dr. Tessy Thomas – Breaking Barriers, Building Missiles**
-![Dr. Tessy Thomas](https://upload.wikimedia.org/wikipedia/commons/f/f7/Tessy_Thomas.jpg)
+![Dr. Tessy Thomas](https://i.ibb.co/TBccswCs/Tessy-Thomas-1.png)
 
 In a world where missiles define a country’s defense capabilities, Dr. Tessy Thomas has been at the forefront, proving that science has no gender. She became India’s first female missile scientist, leading the Agni missile program and ensuring national security. But her story isn’t just about technology; it’s about breaking stereotypes, showing young girls that they, too, can dream of building rockets and leading defense projects.
 
 ---
 
 ## **Dr. Soumya Swaminathan – Fighting for a Healthier World**
-![Dr. Soumya Swaminathan](https://upload.wikimedia.org/wikipedia/commons/a/a1/Soumya_Swaminathan_WHO.jpg)
+![Dr. Soumya Swaminathan](https://i.ibb.co/xtB1rt7N/2020-07-03-T164518-Z-1143379027-RC2-SLH9-B4-JN4-RTRMADP-3-HEALTH-CORONAVIRUS-WHO-TEDROS.jpg)
 
 What does it take to make an impact on global health? Ask Dr. Soumya Swaminathan. From researching tuberculosis to advising world leaders during the pandemic as the Chief Scientist at WHO, her work has saved lives across the planet. Her journey is proof that science isn’t just about discoveries—it’s about compassion, responsibility, and making a difference where it matters most.
 
 ---
 
 ## **Dr. Manindra Agrawal – The Digital Guardian of Our Age**
-![Dr. Manindra Agrawal](https://upload.wikimedia.org/wikipedia/commons/7/7d/Manindra_Agrawal.jpg)
+![Dr. Manindra Agrawal](https://i.ibb.co/3m1P8sXf/A8.jpg)
 
 Every time you make a secure online transaction or protect your data from cyber threats, there’s complex mathematics working in the background. Dr. Manindra Agrawal, a mathematician and computer scientist, revolutionized cryptography with his AKS primality test, changing the way we approach digital security. In an age of cyber risks, his work is the invisible shield guarding our digital lives.
 
