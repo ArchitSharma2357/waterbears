@@ -33,6 +33,11 @@ Imagine the thrill of watching a spacecraft launched from Earth, traveling milli
 
 <img src="waterbears/public/images/kang.jpg" alt="Dr. Gagandeep Kang" style="width: 100%; max-width: 500px; display: block; margin: auto; border-radius: 10px;">
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Manindra_Agarwal.jpg?20150315190455" alt="Dr. Gagandeep Kang1" style="width: 100%; max-width: 500px; display: block; margin: auto; border-radius: 10px;">
+
+
+<img src="https://en.wikipedia.org/wiki/File:Manindra_Agarwal.jpg" alt="Dr. Gagandeep Kang" style="width: 100%; max-width: 500px; display: block; margin: auto; border-radius: 10px;">
+
 For every child who laughs without the fear of deadly infections, we owe a debt to Dr. Gagandeep Kang. A pioneering microbiologist, she played a key role in developing the rotavirus vaccine, protecting millions from life-threatening diarrhea. Her expertise didn’t stop there—when the world was hit by COVID-19, she became a guiding voice, ensuring science led the way. Her work is a reminder that behind every vaccine is a scientist fighting to keep humanity safe.
 
 ---
