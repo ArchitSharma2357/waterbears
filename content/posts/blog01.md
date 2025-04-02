@@ -20,7 +20,7 @@ Science isn’t just about equations and laboratories—it’s about people, the
 ---
 
 ## **Dr. K. Radhakrishnan – The Man Who Took India to Mars**
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Koppillil_Radhakrishnan.jpg" alt="Dr. K. Radhakrishnan" width="500">
+<img src="https://en.wikipedia.org/wiki/File:K-Radhakrishnan-2014.jpg" alt="Dr. K. Radhakrishnan" width="500">
 
 Imagine the thrill of watching a spacecraft launched from Earth, traveling millions of kilometers, and finally reaching Mars—all on the first attempt. That’s exactly what happened with Mangalyaan, India’s Mars Orbiter Mission, and behind it stood Dr. K. Radhakrishnan. His vision and leadership turned what seemed like an impossible dream into a historic achievement, making India the first country to reach Mars in its maiden attempt. More than a mission, it was a statement to the world: India is here to explore the cosmos.
 
