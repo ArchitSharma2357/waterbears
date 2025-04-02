@@ -194,6 +194,4 @@ Plot the Data:
 plot_predictions();
 ```
 #### Result:
-Instead of just being numbers on a page, our data is now a straight line. Machines love numbers, and we humans like numbers too—but we also like to look at things.
-
-{{< code_submission.html >}}
+Instead of just being numbers on a page, our data is now a straight line. Machines love numbers, and we humans like numbers too—but we also like to look at things
