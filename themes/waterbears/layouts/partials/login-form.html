@@ -1,5 +1,6 @@
 <h1>Login / Sign Up</h1>
 
+<!-- Sign Up Form -->
 <form id="signup-form">
   <h2>Sign Up</h2>
   <input type="email" id="signup-email" placeholder="Email" required />
@@ -7,6 +8,7 @@
   <button type="submit">Create Account</button>
 </form>
 
+<!-- Sign In Form -->
 <form id="signin-form">
   <h2>Sign In</h2>
   <input type="email" id="signin-email" placeholder="Email" required />
@@ -14,6 +16,7 @@
   <button type="submit">Log In</button>
 </form>
 
+<!-- Log Out Button -->
 <button id="signout-button">Log Out</button>
 <p id="auth-status">👤 Checking login status...</p>
 
@@ -21,11 +24,12 @@
 <script>
   const supabase = window.supabase.createClient(
     'https://cmbmfdtmofhidxjugtcd.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
   );
 
   const status = document.getElementById('auth-status');
 
+  // Sign Up Form Handler
   document.getElementById('signup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('signup-email').value;
@@ -34,6 +38,7 @@
     status.textContent = error ? `❌ Signup error: ${error.message}` : '✅ Signup successful! Check your email.';
   });
 
+  // Sign In Form Handler
   document.getElementById('signin-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('signin-email').value;
@@ -42,11 +47,13 @@
     status.textContent = error ? `❌ Login error: ${error.message}` : `✅ Logged in as ${email}`;
   });
 
+  // Sign Out Button Handler
   document.getElementById('signout-button').addEventListener('click', async () => {
     await supabase.auth.signOut();
     status.textContent = '👋 Signed out.';
   });
 
+  // Check Login Status
   supabase.auth.getUser().then(({ data: { user } }) => {
     status.textContent = user ? `🔒 Logged in as ${user.email}` : '👤 Not logged in.';
   });
