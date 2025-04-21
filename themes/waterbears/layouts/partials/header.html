@@ -23,47 +23,12 @@
   <hr />
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-    const supabase = window.supabase.createClient(
-    'https://cmbmfdtmofhidxjugtcd.supabase.co',   
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'                
+<script>
+  const supabase = supabase.createClient(
+    'https://cmbmfdtmofhidxjugtcd.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
   );
-  
-    // Handle login form submission
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-  
-      // Get user input values
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const status = document.getElementById('login-status');
-  
-      // Sign in user with email and password
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-  
-      if (error) {
-        console.error('Login error:', error);
-        status.innerText = "❌ Failed to log in. Please try again.";
-      } else {
-        console.log('User signed in:', data.user);
-        status.innerText = "✅ Successfully logged in!";
-        // Redirect after successful login (optional)
-        window.location.href = "/profile";  // Redirect to profile page or any page you want
-      }
-    });
-  </script>
-  
-  <!-- HTML for the login form -->
-  <div id="login-container">
-    <form id="login-form">
-      <input type="email" id="email" placeholder="Enter your email" required>
-      <input type="password" id="password" placeholder="Enter your password" required>
-      <button type="submit">Login</button>
-    </form>
-    <p id="login-status"></p>
-  </div>
-  
+</script>
+
+
+</header>
