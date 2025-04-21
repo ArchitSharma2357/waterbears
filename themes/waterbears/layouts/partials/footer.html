@@ -1,7 +1,7 @@
 <footer>
   <hr />
   {{ if .Site.Params.social }}
-     <p id="social">
+    <p id="social">
       Find me around the web:
       <br />
       {{ range $i, $e := .Site.Params.social }}
@@ -9,11 +9,53 @@
         <a href="{{ .url }}">{{ .name }}</a>
       {{ end }}
     </p>
-  
   {{ end }}
 
   <p class="copyright">
     Copyright © {{ now.Format "2006"}}
     <strong>{{ default "Blog Author" .Site.Params.Author }}</strong>.
   </p>
+
+  <!-- Contact Form -->
+  <section id="contact">
+    <h3>Contact Me</h3>
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p id="form-status"></p>
+  </section>
 </footer>
+
+<!-- Supabase Script -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabase = supabase.createClient(
+    'https://cmbmfdtmofhidxjugtcd.supabase.co',   
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'                
+  );
+
+  // Handle form submit
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const status = document.getElementById('form-status');
+
+    const { error } = await supabase
+      .from('contact_messages')
+      .insert([{ name, email, message }]);
+
+    if (error) {
+      console.error('Insert error:', error);
+      status.innerText = "❌ Failed to send. Try again.";
+    } else {
+      status.innerText = "✅ Message sent!";
+      document.getElementById('contact-form').reset();
+    }
+  });
+</script>
