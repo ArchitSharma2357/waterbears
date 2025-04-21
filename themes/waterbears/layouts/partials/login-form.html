@@ -1,72 +1,53 @@
+<h1>Login / Sign Up</h1>
+
+<form id="signup-form">
+  <h2>Sign Up</h2>
+  <input type="email" id="signup-email" placeholder="Email" required />
+  <input type="password" id="signup-password" placeholder="Password" required />
+  <button type="submit">Create Account</button>
+</form>
+
+<form id="signin-form">
+  <h2>Sign In</h2>
+  <input type="email" id="signin-email" placeholder="Email" required />
+  <input type="password" id="signin-password" placeholder="Password" required />
+  <button type="submit">Log In</button>
+</form>
+
+<button id="signout-button">Log Out</button>
+<p id="auth-status">👤 Checking login status...</p>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const supabase = supabase.createClient(
+  const supabase = window.supabase.createClient(
     'https://cmbmfdtmofhidxjugtcd.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
   );
 
-  const toggleBtn = document.getElementById('auth-toggle');
-  const modal = document.getElementById('auth-modal');
-  const emailInput = document.getElementById('auth-email');
-  const passInput = document.getElementById('auth-password');
-  const submitBtn = document.getElementById('auth-submit');
-  const logoutBtn = document.getElementById('logout-btn');
-  const googleBtn = document.getElementById('google-login');
-  const switchAuth = document.getElementById('toggle-signup');
+  const status = document.getElementById('auth-status');
 
-  let isSignup = false;
+  document.getElementById('signup-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const { error } = await supabase.auth.signUp({ email, password });
+    status.textContent = error ? `❌ Signup error: ${error.message}` : '✅ Signup successful! Check your email.';
+  });
 
-  toggleBtn.onclick = () => {
-    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-  };
+  document.getElementById('signin-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signin-email').value;
+    const password = document.getElementById('signin-password').value;
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    status.textContent = error ? `❌ Login error: ${error.message}` : `✅ Logged in as ${email}`;
+  });
 
-  switchAuth.onclick = () => {
-    isSignup = !isSignup;
-    submitBtn.textContent = isSignup ? 'Sign Up' : 'Login';
-    switchAuth.textContent = isSignup ? 'Switch to Login' : 'Switch to Sign Up';
-  };
-
-  submitBtn.onclick = async () => {
-    const email = emailInput.value;
-    const password = passInput.value;
-
-    let result;
-    if (isSignup) {
-      result = await supabase.auth.signUp({ email, password });
-    } else {
-      result = await supabase.auth.signInWithPassword({ email, password });
-    }
-
-    if (result.error) alert(result.error.message);
-    else updateUI();
-  };
-
-  logoutBtn.onclick = async () => {
+  document.getElementById('signout-button').addEventListener('click', async () => {
     await supabase.auth.signOut();
-    updateUI();
-  };
+    status.textContent = '👋 Signed out.';
+  });
 
-  googleBtn.onclick = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google'
-    });
-    if (error) alert(error.message);
-  };
-
-  async function updateUI() {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session?.user) {
-      toggleBtn.textContent = session.user.email.split('@')[0];
-      logoutBtn.style.display = 'block';
-      submitBtn.style.display = googleBtn.style.display = switchAuth.style.display = 'none';
-    } else {
-      toggleBtn.textContent = 'Login';
-      logoutBtn.style.display = 'none';
-      submitBtn.style.display = googleBtn.style.display = switchAuth.style.display = 'block';
-    }
-    modal.style.display = 'none';
-  }
-
-  supabase.auth.onAuthStateChange(updateUI);
-  updateUI();
+  supabase.auth.getUser().then(({ data: { user } }) => {
+    status.textContent = user ? `🔒 Logged in as ${user.email}` : '👤 Not logged in.';
+  });
 </script>
