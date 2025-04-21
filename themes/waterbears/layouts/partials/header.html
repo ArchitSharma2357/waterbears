@@ -22,10 +22,84 @@
 
   <hr />
 
-<!-- Login Button (top right) -->
-<div class="login-button-container">
-  <a href="/login/" class="login-button">Login</a>
+<!-- Minimal Auth UI -->
+<style>
+  #auth-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #ffffffdd;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  #auth-modal {
+    display: none;
+    position: fixed;
+    top: 15%;
+    right: 5%;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    z-index: 1001;
+    width: 260px;
+  }
+
+  #auth-modal input {
+    width: 100%;
+    padding: 8px;
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+
+  #auth-modal button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #auth-modal button:hover {
+    background-color: #222;
+  }
+
+  .google-btn {
+    background-color: #db4437 !important;
+  }
+
+  .switch-auth {
+    background: none;
+    border: none;
+    color: #0077cc;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+</style>
+
+<button id="auth-toggle">Login</button>
+
+<div id="auth-modal">
+  <input type="email" id="auth-email" placeholder="Email" />
+  <input type="password" id="auth-password" placeholder="Password" />
+  <button id="auth-submit">Login</button>
+  <button class="google-btn" id="google-login">Login with Google</button>
+  <button class="switch-auth" id="toggle-signup">Switch to Sign Up</button>
+  <button id="logout-btn" style="display:none; margin-top: 1rem;">Logout</button>
 </div>
+
 
 
 </header>
