@@ -5,9 +5,9 @@
         class="icon"
         src="{{ default "images/brandIcon.svg" .Site.Params.brandIconFile | relURL }}"/>
     </a>
-    <a href="ArchitSharma2357/waterbears/content/login/login-form.html" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+    <a href="{{ "/login/login-form.html" | relURL }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
       Login / Sign Up
-    </a>    
+    </a>        
     <div class="text">
       <a href="{{ .Site.BaseURL }}"><h1>{{ .Site.Title }}</h1></a>
       <h3>{{ default "Veni, Vidi, Coded." .Site.Params.subtitle }}</h3>
