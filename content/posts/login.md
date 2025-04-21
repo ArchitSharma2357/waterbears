@@ -2,4 +2,4 @@
 title = "Login Page"
 +++
 
-{{ partial "login-form.html" }}
+{{ partial "login-form.html" . }}
