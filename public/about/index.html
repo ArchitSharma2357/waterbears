@@ -18,37 +18,51 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
+    <!-- Fancy CSS Styles -->
+    <style>
+      /* (existing CSS styles here) */
+      .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+
+      .profile-info {
+        text-align: left;
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+
+      .social-links a {
+        margin-right: 10px;
+        color: #1a73e8;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: #ffdf00;
+      }
+
+      /* Add responsive styles for mobile */
+      @media (max-width: 768px) {
+        #content {
+          padding: 10px;
+        }
+        .profile-image {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root">
       <header>
-        <div id="brand">
-          <a class="icon-link" href="http://localhost:1313/">
-            <img class="icon" src="/images/brandIcon.svg"/>
-          </a>
-          <div class="text">
-            <a href="http://localhost:1313/"><h1>WaterBears</h1></a>
-            <h3>Veni, Vidi, Coded.</h3>
-          </div>
-        </div>
-
-        <nav>
-          <a href="/"><b>Home</b></a> | 
-          <a href="/courses/"><b>Courses</b></a> | 
-          <a href="/posts/"><b>Posts</b></a> | 
-          <a href="/tags/"><b>Tags</b></a> | 
-          <a href="/about/"><b>About</b></a>
-        </nav>
-
-        <hr />
-
-        <div class="login-button-container">
-          <a href="/login/" class="login-button">Login</a>
-        </div>
-
-        <div class="signup-button-container">
-          <a href="/signup/" class="signup-button">Sign Up</a> 
-        </div>
+        <!-- Header code (same as before) -->
       </header>
 
       <div id="content">
@@ -63,37 +77,12 @@
           </div>
 
           <!-- Auth Form -->
-          <h2>Sign Up</h2>
-          <form id="signup-form">
-            <input type="email" id="signup-email" placeholder="Email" required />
-            <input type="password" id="signup-password" placeholder="Password" required />
-            <button type="submit">Sign Up</button>
-          </form>
-
-          <h2>Sign In</h2>
-          <form id="signin-form">
-            <input type="email" id="signin-email" placeholder="Email" required />
-            <input type="password" id="signin-password" placeholder="Password" required />
-            <button type="submit">Sign In</button>
-          </form>
-
-          <button id="signout-button">Sign Out</button>
-          <p id="auth-status"></p>
+          <!-- (same as before) -->
         </main>
       </div>
 
       <footer>
-        <hr />
-        <p id="social">
-          Find me around the web:
-          <br />
-          <a href="https://github.com/ArchitSharma2357">GitHub</a> | 
-          <a href="https://www.linkedin.com/in/archit226sharma/">LinkedIn</a>
-        </p>
-
-        <p class="copyright">
-          Copyright © 2025 <strong>WaterBears</strong>.
-        </p>
+        <!-- Footer code (same as before) -->
       </footer>
     </div>
 
@@ -130,7 +119,7 @@
           status.innerText = `❌ Login error: ${error.message}`;
         } else {
           status.innerText = `✅ Logged in as ${email}`;
-          loadUserProfile(); // Load profile if logged in
+          loadUserProfile(); // Load profile after successful login
         }
       });
 
@@ -140,77 +129,38 @@
         status.innerText = '👋 Signed out.';
       });
 
-      // Load user profile if logged in
-      async function loadUserProfile() {
-        const container = document.getElementById('profile-container');
-        const { data: { user } } = await supabase.auth.getUser();
-
-        if (user) {
-          let { data: profile, error } = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', user.id)
-            .single();
-
-          if (!profile) {
-            const { data: newProfile, error: insertError } = await supabase
-              .from('profiles')
-              .insert([{
-                id: user.id,
-                full_name: user.user_metadata.full_name || '',
-                username: user.user_metadata.user_name || user.email.split('@')[0],
-                avatar_url: user.user_metadata.avatar_url || '',
-                bio: ''
-              }])
-              .select()
-              .single();
-            profile = newProfile;
-          }
-
-          container.innerHTML = `
-            <form id="profile-form">
-              <label>Full Name:<br><input type="text" id="full_name" value="${profile.full_name || ''}" /></label><br>
-              <label>Username:<br><input type="text" id="username" value="${profile.username || ''}" /></label><br>
-              <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
-              <button type="submit">Update Profile</button>
-            </form>
-            <p id="status-message"></p>
-          `;
-
-          document.getElementById('profile-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const full_name = document.getElementById('full_name').value;
-            const username = document.getElementById('username').value;
-            const bio = document.getElementById('bio').value;
-
-            const submitButton = document.querySelector("button[type='submit']");
-            submitButton.disabled = true; // Disable the button
-
-            const { error: updateError } = await supabase
-              .from('profiles')
-              .update({ full_name, username, bio })
-              .eq('id', user.id);
-
-            document.getElementById('status-message').textContent =
-              updateError ? 'Failed to update profile' : 'Profile updated successfully!';
-
-            submitButton.disabled = false; // Re-enable the button
-          });
-        } else {
-          container.innerHTML = '<p>You are not logged in. <a href="/login/">Sign in</a></p>';
-        }
-      }
-
-      // Show user status on page load
+      // Optional: show user status on page load
       supabase.auth.getUser().then(({ data: { user } }) => {
         if (user) {
           status.innerText = `🔒 Already logged in as ${user.email}`;
-          loadUserProfile(); // Load the profile if logged in
+          loadUserProfile(); // Load profile if logged in
         } else {
           status.innerText = `👤 Not logged in.`;
         }
       });
+
+      // Load user profile data (this can be extended to show specific fields like bio, name, etc.)
+      async function loadUserProfile() {
+        const user = supabase.auth.user();
+        const { data, error } = await supabase.from('profiles').select('*').eq('user_id', user.id).single();
+        if (data) {
+          const profileContainer = document.getElementById('profile-container');
+          profileContainer.innerHTML = `
+            <div class="profile-info">
+              <img src="${data.profile_image_url || '/images/default-profile.jpg'}" class="profile-image" alt="Profile Image" />
+              <p><strong>Name:</strong> ${data.name || 'Not available'}</p>
+              <p><strong>Email:</strong> ${data.email}</p>
+              <p><strong>Bio:</strong> ${data.bio || 'No bio yet.'}</p>
+              <p><strong>Location:</strong> ${data.location || 'Not specified'}</p>
+            </div>
+            <div class="social-links">
+              <p><strong>Find me around the web:</strong></p>
+              <a href="${data.social_links?.github || '#'}" target="_blank">GitHub</a>
+              <a href="${data.social_links?.linkedin || '#'}" target="_blank">LinkedIn</a>
+            </div>
+          `;
+        }
+      }
     </script>
   </body>
 </html>
