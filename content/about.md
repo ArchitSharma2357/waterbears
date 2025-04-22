@@ -36,114 +36,109 @@ If you are logged in, you can view and edit your profile below. If you're not lo
 <button id="signout-button">Sign Out</button>
 <p id="auth-status"></p>
 
-<!-- Supabase JS -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const supabase = window.supabase.createClient(
-    'https://cmbmfdtmofhidxjugtcd.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
-  );
+  document.addEventListener('DOMContentLoaded', () => {
+    const supabase = window.supabase.createClient(
+      'https://cmbmfdtmofhidxjugtcd.supabase.co',
+      'your-anon-key-here'
+    );
 
-  const status = document.getElementById('auth-status');
+    const status = document.getElementById('auth-status');
 
-  // Sign Up
-  document.getElementById('signup-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('signup-email').value.trim();
-    const password = document.getElementById('signup-password').value.trim();
-    const { error } = await supabase.auth.signUp({ email, password });
-    if (error) {
-      status.innerText = `❌ Signup error: ${error.message}`;
-    } else {
-      status.innerText = '✅ Signup successful! Check your email to confirm.';
+    // Sign Up
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value.trim();
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        status.innerText = `❌ Signup error: ${error.message}`;
+      } else {
+        status.innerText = '✅ Signup successful! Check your email to confirm.';
+      }
+    });
+
+    // Sign In
+    document.getElementById('signin-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('signin-email').value.trim();
+      const password = document.getElementById('signin-password').value.trim();
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        status.innerText = `❌ Login error: ${error.message}`;
+      } else {
+        const { data } = await supabase.auth.getSession();
+        const userId = data.session.user.id;
+        status.innerText = `✅ Logged in as ${email}`;
+        loadUserProfile(userId);
+      }
+    });
+
+    // Sign Out
+    document.getElementById('signout-button').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      status.innerText = '👋 Signed out.';
+      document.getElementById('profile-container').innerHTML = '<p>Logged out. Please sign in again.</p>';
+    });
+
+    // Auto-load session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      const user = session?.user;
+      if (user) {
+        status.innerText = `🔒 Already logged in as ${user.email}`;
+        loadUserProfile(user.id);
+      } else {
+        status.innerText = `👤 Not logged in.`;
+      }
+    });
+
+    async function loadUserProfile(userId) {
+      const container = document.getElementById('profile-container');
+      container.innerHTML = `<p>Loading your profile...</p>`;
+
+      let { data: profile, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('user_id', userId)
+        .single();
+
+      if (error) {
+        console.error('Error loading profile:', error);
+        container.innerHTML = `<p style="color:red;">Failed to load profile.</p>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <form id="profile-form">
+          <label>Name:<br><input type="text" id="name" value="${profile.name || ''}" /></label><br>
+          <label>Email:<br><input type="email" id="email" value="${profile.email || ''}" /></label><br>
+          <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
+          <label>Location:<br><input type="text" id="location" value="${profile.location || ''}" /></label><br>
+          <button type="submit">Update Profile</button>
+        </form>
+        <p id="status-message"></p>
+      `;
+
+      document.getElementById('profile-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const bio = document.getElementById('bio').value;
+        const location = document.getElementById('location').value;
+
+        const submitButton = e.target.querySelector("button[type='submit']");
+        submitButton.disabled = true;
+
+        const { error: updateError } = await supabase
+          .from('profiles')
+          .update({ name, email, bio, location })
+          .eq('user_id', userId);
+
+        document.getElementById('status-message').textContent =
+          updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
+
+        submitButton.disabled = false;
+      });
     }
   });
-
-  // Sign In
-  document.getElementById('signin-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('signin-email').value.trim();
-    const password = document.getElementById('signin-password').value.trim();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      status.innerText = `❌ Login error: ${error.message}`;
-    } else {
-      status.innerText = `✅ Logged in as ${email}`;
-      const session = await supabase.auth.getSession();
-      loadUserProfile(session.data.session.user.id);
-    }
-  });
-
-  // Sign Out
-  document.getElementById('signout-button').addEventListener('click', async () => {
-    await supabase.auth.signOut();
-    status.innerText = '👋 Signed out.';
-    document.getElementById('profile-container').innerHTML = '<p>Logged out. Please sign in again.</p>';
-  });
-
-  // Load profile if user is already logged in
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    const user = session?.user;
-    if (user) {
-      status.innerText = `🔒 Already logged in as ${user.email}`;
-      loadUserProfile(user.id);
-    } else {
-      status.innerText = `👤 Not logged in.`;
-    }
-  });
-
-  async function loadUserProfile(userId) {
-  const container = document.getElementById('profile-container');
-
-  let { data: profile, error } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('user_id', userId)
-    .single();
-
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error loading profile:', error);
-    container.innerHTML = `<p style="color:red;">Failed to load profile.</p>`;
-    return;
-  }
-
-    if (!profile) {
-  container.innerHTML = `<p style="color:red;">No profile found.</p>`;
-  return;
-}
-
-
-  container.innerHTML = `
-    <form id="profile-form">
-      <label>Name:<br><input type="text" id="name" value="${profile.name || ''}" /></label><br>
-      <label>Email:<br><input type="email" id="email" value="${profile.email || ''}" /></label><br>
-      <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
-      <label>Location:<br><input type="text" id="location" value="${profile.location || ''}" /></label><br>
-      <button type="submit">Update Profile</button>
-    </form>
-    <p id="status-message"></p>
-  `;
-
-  document.getElementById('profile-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const bio = document.getElementById('bio').value;
-    const location = document.getElementById('location').value;
-
-    const submitButton = e.target.querySelector("button[type='submit']");
-    submitButton.disabled = true;
-
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({ name, email, bio, location })
-      .eq('user_id', userId);
-
-    document.getElementById('status-message').textContent =
-      updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
-
-    submitButton.disabled = false;
-  });
-}
-
 </script>
