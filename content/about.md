@@ -93,61 +93,77 @@ If you are logged in, you can view and edit your profile below. If you're not lo
   });
 
   async function loadUserProfile(userId) {
-    const container = document.getElementById('profile-container');
-    let { data: profile, error } = await supabase
+  const container = document.getElementById('profile-container');
+
+  let { data: profile, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('user_id', userId)
+    .single();
+
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error loading profile:', error);
+    container.innerHTML = `<p style="color:red;">Failed to load profile.</p>`;
+    return;
+  }
+
+  if (!profile) {
+    const { data: newProfile, error: insertError } = await supabase
       .from('profiles')
-      .select('*')
-      .eq('id', userId)
+      .insert([
+        {
+          user_id: userId,
+          name: '',
+          email: '',
+          bio: '',
+          location: '',
+          social_links: {},
+          profile_image_url: ''
+        }
+      ])
+      .select()
       .single();
 
-    if (error) console.error('Error fetching profile:', error);
-
-    if (!profile) {
-      // Create new profile if not found
-      const { data: newProfile, error: insertError } = await supabase
-        .from('profiles')
-        .insert([{
-          id: userId,
-          full_name: '',
-          username: '',
-          avatar_url: '',
-          bio: ''
-        }])
-        .select()
-        .single();
-      if (insertError) return console.error('Error inserting profile:', insertError);
-      profile = newProfile;
+    if (insertError) {
+      console.error('Error creating profile:', insertError);
+      container.innerHTML = `<p style="color:red;">Failed to create profile.</p>`;
+      return;
     }
 
-    container.innerHTML = `
-      <form id="profile-form">
-        <label>Full Name:<br><input type="text" id="full_name" value="${profile.full_name || ''}" /></label><br>
-        <label>Username:<br><input type="text" id="username" value="${profile.username || ''}" /></label><br>
-        <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
-        <button type="submit">Update Profile</button>
-      </form>
-      <p id="status-message"></p>
-    `;
-
-    document.getElementById('profile-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const full_name = document.getElementById('full_name').value;
-      const username = document.getElementById('username').value;
-      const bio = document.getElementById('bio').value;
-
-      const submitButton = e.target.querySelector("button[type='submit']");
-      submitButton.disabled = true;
-
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({ full_name, username, bio })
-        .eq('id', userId);
-
-      document.getElementById('status-message').textContent =
-        updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
-      if (updateError) console.error('Update error:', updateError);
-
-      submitButton.disabled = false;
-    });
+    profile = newProfile;
   }
+
+  container.innerHTML = `
+    <form id="profile-form">
+      <label>Name:<br><input type="text" id="name" value="${profile.name || ''}" /></label><br>
+      <label>Email:<br><input type="email" id="email" value="${profile.email || ''}" /></label><br>
+      <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
+      <label>Location:<br><input type="text" id="location" value="${profile.location || ''}" /></label><br>
+      <button type="submit">Update Profile</button>
+    </form>
+    <p id="status-message"></p>
+  `;
+
+  document.getElementById('profile-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const bio = document.getElementById('bio').value;
+    const location = document.getElementById('location').value;
+
+    const submitButton = e.target.querySelector("button[type='submit']");
+    submitButton.disabled = true;
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({ name, email, bio, location })
+      .eq('user_id', userId);
+
+    document.getElementById('status-message').textContent =
+      updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
+
+    submitButton.disabled = false;
+  });
+}
+
 </script>
