@@ -1,110 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content=""
-  />
-  
+  <head>
+    <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>About | WaterBears</title>
     
-      <title>About | WaterBears</title>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/font.css"/>
+    <link rel="stylesheet" href="/css/smigle.css"/>
     
-  
-  <link rel="stylesheet" href="/css/reset.css"/>
-  <link rel="stylesheet" href="/css/font.css"/>
-  <link rel="stylesheet" href="/css/smigle.css"/>
-  
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-</head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+  </head>
   <body>
     <div id="root">
       <header>
-  <div id="brand">
-    <a class="icon-link" href="http://localhost:1313/">
-      <img
-        class="icon"
-        src="/images/brandIcon.svg"/>
-    </a>
-    <div class="text">
-      <a href="http://localhost:1313/"><h1>WaterBears</h1></a>
-      <h3>Veni, Vidi, Coded.</h3>
-    </div>
-  </div>
+        <div id="brand">
+          <a class="icon-link" href="http://localhost:1313/">
+            <img class="icon" src="/images/brandIcon.svg"/>
+          </a>
+          <div class="text">
+            <a href="http://localhost:1313/"><h1>WaterBears</h1></a>
+            <h3>Veni, Vidi, Coded.</h3>
+          </div>
+        </div>
 
-  <nav>
-    
-      
-        
-        <a href="/"><b>Home</b></a>
-      
-         | 
-        <a href="/courses/"><b>Courses</b></a>
-      
-         | 
-        <a href="/posts/"><b>Posts</b></a>
-      
-         | 
-        <a href="/tags/"><b>Tags</b></a>
-      
-         | 
-        <a href="/about/"><b>About</b></a>
-      
-    
-  </nav>
+        <nav>
+          <a href="/"><b>Home</b></a> | 
+          <a href="/courses/"><b>Courses</b></a> | 
+          <a href="/posts/"><b>Posts</b></a> | 
+          <a href="/tags/"><b>Tags</b></a> | 
+          <a href="/about/"><b>About</b></a>
+        </nav>
 
-  <hr />
+        <hr />
 
+        <div class="login-button-container">
+          <a href="/login/" class="login-button">Login</a>
+        </div>
 
-<div class="login-button-container">
-  <a href="/login/" class="login-button">Login</a>
-</div>
-
-
-<div class="signup-button-container">
-  <a href="/signup/" class="signup-button">Sign Up</a> 
-</div>
-
-</header>
+        <div class="signup-button-container">
+          <a href="/signup/" class="signup-button">Sign Up</a> 
+        </div>
+      </header>
 
       <div id="content">
-        
-	<main>
-    <h1>About</h1>
-    <p>Hi.</p>
+        <main>
+          <h1>About</h1>
+          <p>Hi. Welcome to the About page!</p>
 
-	</main>
+          <!-- Profile Information -->
+          <h2>My Profile</h2>
+          <div id="profile-container">
+            <p>Loading...</p>
+          </div>
 
+          <!-- Auth Form -->
+          <h2>Sign Up</h2>
+          <form id="signup-form">
+            <input type="email" id="signup-email" placeholder="Email" required />
+            <input type="password" id="signup-password" placeholder="Password" required />
+            <button type="submit">Sign Up</button>
+          </form>
+
+          <h2>Sign In</h2>
+          <form id="signin-form">
+            <input type="email" id="signin-email" placeholder="Email" required />
+            <input type="password" id="signin-password" placeholder="Password" required />
+            <button type="submit">Sign In</button>
+          </form>
+
+          <button id="signout-button">Sign Out</button>
+          <p id="auth-status"></p>
+        </main>
       </div>
-      <footer>
-  <hr />
-  
-     <p id="social">
-      Find me around the web:
-      <br />
-      
-        
-        <a href="https://github.com/ArchitSharma2357">GitHub</a>
-      
-         | 
-        <a href="https://www.linkedin.com/in/archit226sharma/">LinkedIn</a>
-      
-    </p>
-  
-  
 
-  <p class="copyright">
-    Copyright © 2025
-    <strong>WaterBears</strong>.
-  </p>
-</footer>
+      <footer>
+        <hr />
+        <p id="social">
+          Find me around the web:
+          <br />
+          <a href="https://github.com/ArchitSharma2357">GitHub</a> | 
+          <a href="https://www.linkedin.com/in/archit226sharma/">LinkedIn</a>
+        </p>
+
+        <p class="copyright">
+          Copyright © 2025 <strong>WaterBears</strong>.
+        </p>
+      </footer>
     </div>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+      const supabase = window.supabase.createClient(
+        'https://cmbmfdtmofhidxjugtcd.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
+      );
+
+      const status = document.getElementById('auth-status');
+
+      // Sign Up
+      document.getElementById('signup-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value.trim();
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) {
+          status.innerText = `❌ Signup error: ${error.message}`;
+        } else {
+          status.innerText = '✅ Signup successful! Check your email to confirm.';
+        }
+      });
+
+      // Sign In
+      document.getElementById('signin-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('signin-email').value.trim();
+        const password = document.getElementById('signin-password').value.trim();
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+          status.innerText = `❌ Login error: ${error.message}`;
+        } else {
+          status.innerText = `✅ Logged in as ${email}`;
+          loadUserProfile(); // Load profile if logged in
+        }
+      });
+
+      // Sign Out
+      document.getElementById('signout-button').addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        status.innerText = '👋 Signed out.';
+      });
+
+      // Load user profile if logged in
+      async function loadUserProfile() {
+        const container = document.getElementById('profile-container');
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (user) {
+          let { data: profile, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+
+          if (!profile) {
+            const { data: newProfile, error: insertError } = await supabase
+              .from('profiles')
+              .insert([{
+                id: user.id,
+                full_name: user.user_metadata.full_name || '',
+                username: user.user_metadata.user_name || user.email.split('@')[0],
+                avatar_url: user.user_metadata.avatar_url || '',
+                bio: ''
+              }])
+              .select()
+              .single();
+            profile = newProfile;
+          }
+
+          container.innerHTML = `
+            <form id="profile-form">
+              <label>Full Name:<br><input type="text" id="full_name" value="${profile.full_name || ''}" /></label><br>
+              <label>Username:<br><input type="text" id="username" value="${profile.username || ''}" /></label><br>
+              <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
+              <button type="submit">Update Profile</button>
+            </form>
+            <p id="status-message"></p>
+          `;
+
+          document.getElementById('profile-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const full_name = document.getElementById('full_name').value;
+            const username = document.getElementById('username').value;
+            const bio = document.getElementById('bio').value;
+
+            const submitButton = document.querySelector("button[type='submit']");
+            submitButton.disabled = true; // Disable the button
+
+            const { error: updateError } = await supabase
+              .from('profiles')
+              .update({ full_name, username, bio })
+              .eq('id', user.id);
+
+            document.getElementById('status-message').textContent =
+              updateError ? 'Failed to update profile' : 'Profile updated successfully!';
+
+            submitButton.disabled = false; // Re-enable the button
+          });
+        } else {
+          container.innerHTML = '<p>You are not logged in. <a href="/login/">Sign in</a></p>';
+        }
+      }
+
+      // Show user status on page load
+      supabase.auth.getUser().then(({ data: { user } }) => {
+        if (user) {
+          status.innerText = `🔒 Already logged in as ${user.email}`;
+          loadUserProfile(); // Load the profile if logged in
+        } else {
+          status.innerText = `👤 Not logged in.`;
+        }
+      });
+    </script>
   </body>
 </html>
