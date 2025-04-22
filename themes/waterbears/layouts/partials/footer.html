@@ -14,4 +14,108 @@
     Copyright © {{ now.Format "2006"}}
     <strong>{{ default "Blog Author" .Site.Params.Author }}</strong>.
   </p>
+
+  <section id="comment-section" style="margin-top: 3rem;">
+    <h2 style="font-size: 1.5rem; font-weight: bold; color: #333;">Comments</h2>
+    <div id="comments-list" style="margin-top: 1rem;"></div>
+  
+    <div id="comment-form" style="display: none; margin-top: 2rem;">
+      <textarea id="comment-input"
+                style="width: 100%; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;"
+                rows="4"
+                placeholder="Write your comment..."></textarea>
+      <button onclick="submitComment()"
+              style="margin-top: 1rem; background-color: #2563eb; color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 6px; cursor: pointer;">
+        Post Comment
+      </button>
+    </div>
+  
+    <p id="login-reminder" style="margin-top: 1rem; color: #555; display: none;">
+      You must be logged in to comment.
+    </p>
+  </section>
+  
+  <!-- 💬 Comment Section START -->
+  <section id="comment-section" style="margin-top: 3rem;">
+    <h2 style="font-size: 1.5rem; font-weight: bold; color: #333;">Comments</h2>
+    <div id="comments-list" style="margin-top: 1rem;"></div>
+  
+    <div id="comment-form" style="display: none; margin-top: 2rem;">
+      <textarea id="comment-input"
+                style="width: 100%; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;"
+                rows="4"
+                placeholder="Write your comment..."></textarea>
+      <button onclick="submitComment()"
+              style="margin-top: 1rem; background-color: #2563eb; color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 6px; cursor: pointer;">
+        Post Comment
+      </button>
+    </div>
+  
+    <p id="login-reminder" style="margin-top: 1rem; color: #555; display: none;">
+      You must be logged in to comment.
+    </p>
+  </section>
+  
+  <script>
+    // Initialize Supabase if not already
+    const supabase = supabase || window.supabase.createClient(
+        'https://cmbmfdtmofhidxjugtcd.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
+      );
+  
+    const slug = "what-exactly-is-pytorch"; // Use the actual slug or path if dynamic
+    const commentsList = document.getElementById('comments-list');
+    const commentForm = document.getElementById('comment-form');
+    const loginReminder = document.getElementById('login-reminder');
+  
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        commentForm.style.display = 'block';
+      } else {
+        loginReminder.style.display = 'block';
+      }
+    });
+  
+    async function loadComments() {
+      const { data, error } = await supabase
+        .from('comments')
+        .select('*')
+        .eq('post_slug', slug)
+        .order('created_at', { ascending: true });
+  
+      if (error) {
+        commentsList.innerHTML = '<p style="color: red;">Failed to load comments.</p>';
+        return;
+      }
+  
+      commentsList.innerHTML = data.map(comment => `
+        <div style="padding: 1rem; background-color: #f9f9f9; border: 1px solid #eee; border-radius: 8px; margin-bottom: 1rem;">
+          <p style="color: #555; font-size: 0.875rem; margin-bottom: 0.5rem;"><strong>${comment.user_email}</strong> wrote:</p>
+          <p style="white-space: pre-wrap; color: #333;">${comment.content}</p>
+        </div>
+      `).join('');
+    }
+  
+    async function submitComment() {
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
+      const content = document.getElementById('comment-input').value.trim();
+  
+      if (!content || !user) return;
+  
+      const { error } = await supabase
+        .from('comments')
+        .insert([{ post_slug: slug, user_email: user.email, content }]);
+  
+      if (!error) {
+        document.getElementById('comment-input').value = '';
+        loadComments();
+      } else {
+        alert("Failed to post comment.");
+      }
+    }
+  
+    loadComments();
+  </script>
+
 </footer>
