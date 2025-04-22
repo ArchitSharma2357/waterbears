@@ -107,6 +107,10 @@ If you are logged in, you can view and edit your profile below. If you're not lo
     return;
   }
 
+    if (!profile) {
+  container.innerHTML = `<p style="color:red;">No profile found.</p>`;
+  return;
+}
 
 
   container.innerHTML = `
