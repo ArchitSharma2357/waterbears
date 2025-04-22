@@ -40,7 +40,7 @@ If you are logged in, you can view and edit your profile below. If you're not lo
   document.addEventListener('DOMContentLoaded', () => {
     const supabase = window.supabase.createClient(
       'https://cmbmfdtmofhidxjugtcd.supabase.co',
-      'your-anon-key-here'
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
     );
 
     const status = document.getElementById('auth-status');
