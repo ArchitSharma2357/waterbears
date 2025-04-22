@@ -52,9 +52,11 @@ If you are logged in, you can view and edit your profile below. If you're not lo
     const email = document.getElementById('signup-email').value.trim();
     const password = document.getElementById('signup-password').value.trim();
     const { error } = await supabase.auth.signUp({ email, password });
-    status.innerText = error
-      ? `❌ Signup error: ${error.message}`
-      : '✅ Signup successful! Check your email to confirm.';
+    if (error) {
+      status.innerText = `❌ Signup error: ${error.message}`;
+    } else {
+      status.innerText = '✅ Signup successful! Check your email to confirm.';
+    }
   });
 
   // Sign In
@@ -62,12 +64,13 @@ If you are logged in, you can view and edit your profile below. If you're not lo
     e.preventDefault();
     const email = document.getElementById('signin-email').value.trim();
     const password = document.getElementById('signin-password').value.trim();
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       status.innerText = `❌ Login error: ${error.message}`;
     } else {
       status.innerText = `✅ Logged in as ${email}`;
-      loadUserProfile(data.user.id);
+      const session = await supabase.auth.getSession();
+      loadUserProfile(session.data.session.user.id);
     }
   });
 
@@ -78,7 +81,7 @@ If you are logged in, you can view and edit your profile below. If you're not lo
     document.getElementById('profile-container').innerHTML = '<p>Logged out. Please sign in again.</p>';
   });
 
-  // Check if already logged in
+  // Load profile if user is already logged in
   supabase.auth.getSession().then(({ data: { session } }) => {
     const user = session?.user;
     if (user) {
@@ -90,20 +93,25 @@ If you are logged in, you can view and edit your profile below. If you're not lo
   });
 
   async function loadUserProfile(userId) {
-    const container = document.getElementById('profile-container');
-    container.innerHTML = `<p>Loading profile...</p>`;
+  const container = document.getElementById('profile-container');
 
-    let { data: profile, error } = await supabase
+  let { data: profile, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('user_id', userId)
+    .single();
+
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error loading profile:', error);
+    container.innerHTML = `<p style="color:red;">Failed to load profile.</p>`;
+    return;
+  }
+
+ <!-- if (!profile) {
+    const { data: newProfile, error: insertError } = await supabase
       .from('profiles')
-      .select('*')
-      .eq('user_id', userId)
-      .single();
-
-    // Create profile if it doesn't exist
-    if (!profile) {
-      const { data: newProfile, error: insertError } = await supabase
-        .from('profiles')
-        .insert([{
+      .insert([
+        {
           user_id: userId,
           name: '',
           email: '',
@@ -111,47 +119,52 @@ If you are logged in, you can view and edit your profile below. If you're not lo
           location: '',
           social_links: {},
           profile_image_url: ''
-        }])
-        .select()
-        .single();
+        }
+      ])
+      .select()
+      .single();
+      -->
 
-      if (insertError) {
-        container.innerHTML = `<p style="color:red;">❌ Failed to create profile: ${insertError.message}</p>`;
-        return;
-      }
-      profile = newProfile;
+    if (insertError) {
+      console.error('Error creating profile:', insertError);
+      container.innerHTML = `<p style="color:red;">Failed to create profile.</p>`;
+      return;
     }
 
-    container.innerHTML = `
-      <form id="profile-form">
-        <label>Name:<br><input type="text" id="name" value="${profile.name || ''}" /></label><br>
-        <label>Email:<br><input type="email" id="email" value="${profile.email || ''}" /></label><br>
-        <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
-        <label>Location:<br><input type="text" id="location" value="${profile.location || ''}" /></label><br>
-        <button type="submit">Update Profile</button>
-      </form>
-      <p id="status-message"></p>
-    `;
-
-    document.getElementById('profile-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const bio = document.getElementById('bio').value;
-      const location = document.getElementById('location').value;
-
-      const submitButton = e.target.querySelector("button[type='submit']");
-      submitButton.disabled = true;
-
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({ name, email, bio, location })
-        .eq('user_id', userId);
-
-      document.getElementById('status-message').textContent =
-        updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
-
-      submitButton.disabled = false;
-    });
+    profile = newProfile;
   }
+
+  container.innerHTML = `
+    <form id="profile-form">
+      <label>Name:<br><input type="text" id="name" value="${profile.name || ''}" /></label><br>
+      <label>Email:<br><input type="email" id="email" value="${profile.email || ''}" /></label><br>
+      <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
+      <label>Location:<br><input type="text" id="location" value="${profile.location || ''}" /></label><br>
+      <button type="submit">Update Profile</button>
+    </form>
+    <p id="status-message"></p>
+  `;
+
+  document.getElementById('profile-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const bio = document.getElementById('bio').value;
+    const location = document.getElementById('location').value;
+
+    const submitButton = e.target.querySelector("button[type='submit']");
+    submitButton.disabled = true;
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({ name, email, bio, location })
+      .eq('user_id', userId);
+
+    document.getElementById('status-message').textContent =
+      updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
+
+    submitButton.disabled = false;
+  });
+}
+
 </script>
