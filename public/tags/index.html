@@ -77,35 +77,34 @@
       
       const supabase = createClient(
         'https://cmbmfdtmofhidxjugtcd.supabase.co',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q' // ← replace with your actual public anon key
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q' // replace with your actual public anon key
       );
-
+    
       async function loadLeaderboard() {
         const leaderboardContainer = document.getElementById('leaderboard-table');
-
+    
         const { data, error } = await supabase
           .from('leaderboard_with_usernames')
           .select('*')
           .order('time_spent', { ascending: false })
           .limit(20);
-
+    
         if (error) {
           leaderboardContainer.innerHTML = '<p style="color:red;">Failed to load leaderboard.</p>';
           return;
         }
-
+    
         if (!data || data.length === 0) {
           leaderboardContainer.innerHTML = '<p>No leaderboard entries found.</p>';
           return;
         }
-
+    
         const table = `
-          <table style="width:100%; border-collapse: collapse;">
+          <table style="width:100%; border-collapse: collapse; text-align: left;">
             <thead>
               <tr>
                 <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Rank</th>
                 <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Username</th>
-                <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Pages Read</th>
                 <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Time Spent (s)</th>
               </tr>
             </thead>
@@ -114,17 +113,17 @@
                 <tr>
                   <td style="padding: 0.5rem;">${i + 1}</td>
                   <td style="padding: 0.5rem;">${entry.username || 'Anonymous'}</td>
-                  <td style="padding: 0.5rem;">${entry.pages_read}</td>
                   <td style="padding: 0.5rem;">${entry.time_spent}</td>
                 </tr>`).join('')}
             </tbody>
           </table>
         `;
-
+    
         leaderboardContainer.innerHTML = table;
       }
-
+    
       loadLeaderboard();
     </script>
+    
   </body>
 </html>
