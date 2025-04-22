@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Courses | WaterBears</title>
+    <title>Leaderboard | WaterBears</title>
 
     <link rel="stylesheet" href="/css/reset.css"/>
     <link rel="stylesheet" href="/css/font.css"/>
@@ -23,43 +23,108 @@
       <header>
         <div id="brand">
           <a class="icon-link" href="http://localhost:1313/">
-            <img class="icon" src="/images/brandIcon.svg" />
+            <img class="icon" src="/images/brandIcon.svg"/>
           </a>
           <div class="text">
             <a href="http://localhost:1313/"><h1>WaterBears</h1></a>
             <h3>Veni, Vidi, Coded.</h3>
           </div>
         </div>
+
         <nav>
-          <a href="/"><b>Home</b></a> | 
-          <a href="/courses/"><b>Courses</b></a> | 
-          <a href="/posts/"><b>Posts</b></a> | 
-          <a href="/tags/"><b>Tags</b></a> | 
+          <a href="/"><b>Home</b></a> |
+          <a href="/courses/"><b>Courses</b></a> |
+          <a href="/posts/"><b>Posts</b></a> |
+          <a href="/tags/"><b>Tags</b></a> |
           <a href="/about/"><b>About</b></a>
         </nav>
         <hr />
+
+        <div class="login-button-container">
+          <a href="/login/" class="login-button">Login</a>
+        </div>
+
+        <div class="signup-button-container">
+          <a href="/signup/" class="signup-button">Sign Up</a> 
+        </div>
       </header>
+
       <div id="content">
-        <main id="terms">
-          <h1>Courses</h1>
-          <ul id="courses-list">
-            <li class="course-card">
-              <a href="/courses/pytorch">
-                <div class="course-info">
-                  <span class="course-name">PyTorch</span>
-                  <span class="course-count"> (8)</span>
-                </div>
-              </a>
-            </li>
-          </ul>
+        <main id="leaderboard">
+          <h1 style="font-size: 2rem; margin-bottom: 1rem;">🏆 Leaderboard</h1>
+          <div id="leaderboard-table">
+            <p>Loading leaderboard...</p>
+          </div>
         </main>
       </div>
+
       <footer>
         <hr />
+        <p id="social">
+          Find me around the web:<br />
+          <a href="https://github.com/WaterBear226">GitHub</a> |
+          <a href="https://www.linkedin.com/in/archit226sharma/">LinkedIn</a>
+        </p>
         <p class="copyright">
-          Copyright © 2025 <strong>WaterBears</strong>.
+          Copyright © 2025
+          <strong>WaterBears</strong>.
         </p>
       </footer>
     </div>
+
+    <script type="module">
+      import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+      
+      const supabase = createClient(
+        'https://cmbmfdtmofhidxjugtcd.supabase.co',
+        'YOUR_PUBLIC_ANON_KEY' // ← replace with your actual public anon key
+      );
+
+      async function loadLeaderboard() {
+        const leaderboardContainer = document.getElementById('leaderboard-table');
+
+        const { data, error } = await supabase
+          .from('leaderboard_with_usernames')
+          .select('*')
+          .order('time_spent', { ascending: false })
+          .limit(20);
+
+        if (error) {
+          leaderboardContainer.innerHTML = '<p style="color:red;">Failed to load leaderboard.</p>';
+          return;
+        }
+
+        if (!data || data.length === 0) {
+          leaderboardContainer.innerHTML = '<p>No leaderboard entries found.</p>';
+          return;
+        }
+
+        const table = `
+          <table style="width:100%; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Rank</th>
+                <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Username</th>
+                <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Pages Read</th>
+                <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Time Spent (s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.map((entry, i) => `
+                <tr>
+                  <td style="padding: 0.5rem;">${i + 1}</td>
+                  <td style="padding: 0.5rem;">${entry.username || 'Anonymous'}</td>
+                  <td style="padding: 0.5rem;">${entry.pages_read}</td>
+                  <td style="padding: 0.5rem;">${entry.time_spent}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        `;
+
+        leaderboardContainer.innerHTML = table;
+      }
+
+      loadLeaderboard();
+    </script>
   </body>
 </html>
