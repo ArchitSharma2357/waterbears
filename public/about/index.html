@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <title>About | WaterBears</title>
-    
-    <link rel="stylesheet" href="/css/reset.css"/>
-    <link rel="stylesheet" href="/css/font.css"/>
-    <link rel="stylesheet" href="/css/smigle.css"/>
-    
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/font.css" />
+    <link rel="stylesheet" href="/css/smigle.css" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -23,11 +23,11 @@
     <div id="root">
       <header>
         <div id="brand">
-          <a class="icon-link" href="http://localhost:1313/">
-            <img class="icon" src="/images/brandIcon.svg"/>
+          <a class="icon-link" href="/">
+            <img class="icon" src="/images/brandIcon.svg" />
           </a>
           <div class="text">
-            <a href="http://localhost:1313/"><h1>WaterBears</h1></a>
+            <a href="/"><h1>WaterBears</h1></a>
             <h3>Veni, Vidi, Coded.</h3>
           </div>
         </div>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="signup-button-container">
-          <a href="/signup/" class="signup-button">Sign Up</a> 
+          <a href="/signup/" class="signup-button">Sign Up</a>
         </div>
       </header>
 
@@ -97,78 +97,95 @@
     <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-      const supabase = window.supabase.createClient(
-        'https://cmbmfdtmofhidxjugtcd.supabase.co',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'
-      );
+      document.addEventListener('DOMContentLoaded', () => {
+        const supabase = window.supabase.createClient(
+          'https://cmbmfdtmofhidxjugtcd.supabase.co',
+          'your-anon-key-here'
+        );
 
-      const status = document.getElementById('auth-status');
+        const status = document.getElementById('auth-status');
 
-      // Sign Up
-      document.getElementById('signup-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('signup-email').value.trim();
-        const password = document.getElementById('signup-password').value.trim();
-        const { error } = await supabase.auth.signUp({ email, password });
-        if (error) {
-          status.innerText = `❌ Signup error: ${error.message}`;
-        } else {
-          status.innerText = '✅ Signup successful! Check your email to confirm.';
-        }
-      });
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = document.getElementById('signup-email').value.trim();
+          const password = document.getElementById('signup-password').value.trim();
+          const { error } = await supabase.auth.signUp({ email, password });
+          status.innerText = error ? `❌ Signup error: ${error.message}` : '✅ Signup successful! Check your email to confirm.';
+        });
 
-      // Sign In
-      document.getElementById('signin-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('signin-email').value.trim();
-        const password = document.getElementById('signin-password').value.trim();
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) {
-          status.innerText = `❌ Login error: ${error.message}`;
-        } else {
-          status.innerText = `✅ Logged in as ${email}`;
-          loadUserProfile(); // Load profile if logged in
-        }
-      });
+        document.getElementById('signin-form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = document.getElementById('signin-email').value.trim();
+          const password = document.getElementById('signin-password').value.trim();
+          const { error } = await supabase.auth.signInWithPassword({ email, password });
+          if (error) {
+            status.innerText = `❌ Login error: ${error.message}`;
+          } else {
+            const { data } = await supabase.auth.getSession();
+            const userId = data.session.user.id;
+            status.innerText = `✅ Logged in as ${email}`;
+            loadUserProfile(userId);
+          }
+        });
 
-      // Sign Out
-      document.getElementById('signout-button').addEventListener('click', async () => {
-        await supabase.auth.signOut();
-        status.innerText = '👋 Signed out.';
-      });
+        document.getElementById('signout-button').addEventListener('click', async () => {
+          await supabase.auth.signOut();
+          status.innerText = '👋 Signed out.';
+          document.getElementById('profile-container').innerHTML = '<p>Logged out. Please sign in again.</p>';
+        });
 
-      // Load user profile if logged in
-      async function loadUserProfile() {
-        const container = document.getElementById('profile-container');
-        const { data: { user } } = await supabase.auth.getUser();
+        supabase.auth.getSession().then(({ data: { session } }) => {
+          const user = session?.user;
+          if (user) {
+            status.innerText = `🔒 Already logged in as ${user.email}`;
+            loadUserProfile(user.id);
+          } else {
+            status.innerText = `👤 Not logged in.`;
+          }
+        });
 
-        if (user) {
+        async function loadUserProfile(userId) {
+          const container = document.getElementById('profile-container');
+          container.innerHTML = `<p>Loading your profile...</p>`;
+
           let { data: profile, error } = await supabase
             .from('profiles')
             .select('*')
-            .eq('id', user.id)
+            .eq('user_id', userId)
             .single();
 
           if (!profile) {
             const { data: newProfile, error: insertError } = await supabase
               .from('profiles')
-              .insert([{
-                id: user.id,
-                full_name: user.user_metadata.full_name || '',
-                username: user.user_metadata.user_name || user.email.split('@')[0],
-                avatar_url: user.user_metadata.avatar_url || '',
-                bio: ''
-              }])
+              .insert([
+                {
+                  user_id: userId,
+                  name: '',
+                  email: '',
+                  bio: '',
+                  location: '',
+                  social_links: {},
+                  profile_image_url: ''
+                }
+              ])
               .select()
               .single();
+
+            if (insertError) {
+              console.error('Error creating profile:', insertError);
+              container.innerHTML = `<p style="color:red;">Failed to create profile.</p>`;
+              return;
+            }
+
             profile = newProfile;
           }
 
           container.innerHTML = `
             <form id="profile-form">
-              <label>Full Name:<br><input type="text" id="full_name" value="${profile.full_name || ''}" /></label><br>
-              <label>Username:<br><input type="text" id="username" value="${profile.username || ''}" /></label><br>
+              <label>Name:<br><input type="text" id="name" value="${profile.name || ''}" /></label><br>
+              <label>Email:<br><input type="email" id="email" value="${profile.email || ''}" /></label><br>
               <label>Bio:<br><textarea id="bio">${profile.bio || ''}</textarea></label><br>
+              <label>Location:<br><input type="text" id="location" value="${profile.location || ''}" /></label><br>
               <button type="submit">Update Profile</button>
             </form>
             <p id="status-message"></p>
@@ -176,36 +193,24 @@
 
           document.getElementById('profile-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            const full_name = document.getElementById('full_name').value;
-            const username = document.getElementById('username').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
             const bio = document.getElementById('bio').value;
+            const location = document.getElementById('location').value;
 
-            const submitButton = document.querySelector("button[type='submit']");
-            submitButton.disabled = true; // Disable the button
+            const submitButton = e.target.querySelector("button[type='submit']");
+            submitButton.disabled = true;
 
             const { error: updateError } = await supabase
               .from('profiles')
-              .update({ full_name, username, bio })
-              .eq('id', user.id);
+              .update({ name, email, bio, location })
+              .eq('user_id', userId);
 
             document.getElementById('status-message').textContent =
-              updateError ? 'Failed to update profile' : 'Profile updated successfully!';
+              updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
 
-            submitButton.disabled = false; // Re-enable the button
+            submitButton.disabled = false;
           });
-        } else {
-          container.innerHTML = '<p>You are not logged in. <a href="/login/">Sign in</a></p>';
-        }
-      }
-
-      // Show user status on page load
-      supabase.auth.getUser().then(({ data: { user } }) => {
-        if (user) {
-          status.innerText = `🔒 Already logged in as ${user.email}`;
-          loadUserProfile(); // Load the profile if logged in
-        } else {
-          status.innerText = `👤 Not logged in.`;
         }
       });
     </script>
