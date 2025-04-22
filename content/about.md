@@ -69,6 +69,8 @@ If you are logged in, you can view and edit your profile below. If you're not lo
       status.innerText = `❌ Login error: ${error.message}`;
     } else {
       status.innerText = `✅ Logged in as ${email}`;
+      const session = await supabase.auth.getSession();
+      loadUserProfile(session.data.session.user.id);
     }
   });
 
@@ -76,13 +78,15 @@ If you are logged in, you can view and edit your profile below. If you're not lo
   document.getElementById('signout-button').addEventListener('click', async () => {
     await supabase.auth.signOut();
     status.innerText = '👋 Signed out.';
+    document.getElementById('profile-container').innerHTML = '<p>Logged out. Please sign in again.</p>';
   });
 
-  // Optional: show user status on page load
-  supabase.auth.getUser().then(({ data: { user } }) => {
+  // Load profile if user is already logged in
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    const user = session?.user;
     if (user) {
       status.innerText = `🔒 Already logged in as ${user.email}`;
-      loadUserProfile(user.id); // Load the profile if logged in
+      loadUserProfile(user.id);
     } else {
       status.innerText = `👤 Not logged in.`;
     }
@@ -96,8 +100,10 @@ If you are logged in, you can view and edit your profile below. If you're not lo
       .eq('id', userId)
       .single();
 
+    if (error) console.error('Error fetching profile:', error);
+
     if (!profile) {
-      // If no profile, create a new one
+      // Create new profile if not found
       const { data: newProfile, error: insertError } = await supabase
         .from('profiles')
         .insert([{
@@ -109,10 +115,10 @@ If you are logged in, you can view and edit your profile below. If you're not lo
         }])
         .select()
         .single();
+      if (insertError) return console.error('Error inserting profile:', insertError);
       profile = newProfile;
     }
 
-    // Show editable form
     container.innerHTML = `
       <form id="profile-form">
         <label>Full Name:<br><input type="text" id="full_name" value="${profile.full_name || ''}" /></label><br>
@@ -125,13 +131,12 @@ If you are logged in, you can view and edit your profile below. If you're not lo
 
     document.getElementById('profile-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-      
       const full_name = document.getElementById('full_name').value;
       const username = document.getElementById('username').value;
       const bio = document.getElementById('bio').value;
 
-      const submitButton = document.querySelector("button[type='submit']");
-      submitButton.disabled = true; // Disable the button
+      const submitButton = e.target.querySelector("button[type='submit']");
+      submitButton.disabled = true;
 
       const { error: updateError } = await supabase
         .from('profiles')
@@ -139,9 +144,10 @@ If you are logged in, you can view and edit your profile below. If you're not lo
         .eq('id', userId);
 
       document.getElementById('status-message').textContent =
-        updateError ? 'Failed to update profile' : 'Profile updated successfully!';
+        updateError ? '❌ Failed to update profile' : '✅ Profile updated!';
+      if (updateError) console.error('Update error:', updateError);
 
-      submitButton.disabled = false; // Re-enable the button
+      submitButton.disabled = false;
     });
   }
 </script>
