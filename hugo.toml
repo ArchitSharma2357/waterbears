@@ -30,20 +30,11 @@ title = "WaterBears"
     url = "/tags/"
     weight = 4
 
-  # [[menu.main]]
-   # identifier = "rss"
-    # name = "RSS"
-    # url = "/index.xml"
-    # weight = 6
-    
-
 [params]
   abbrDateFmt = "Jan 2"
   author = "WaterBears"
   brandIconFile = "images/brandIcon.svg"
   dateFmt = "2006-01-02"
-  # Uncomment to override theme or page defaults
-  # customStylesheets = ["css/custom.css"]
   readingSpeed = 550
   readingSpeedMin = 40
   readingSpeedMax = 55
@@ -56,3 +47,9 @@ title = "WaterBears"
     url = "https://www.linkedin.com/in/archit226sharma/"
 
 subtitle = ""
+
+[permalinks]
+  profile = "/profile/"
+  posts = "/:year/:month/:day/:slug/"
+  categories = "/categories/:slug/"
+  tags = "/tags/:slug/"

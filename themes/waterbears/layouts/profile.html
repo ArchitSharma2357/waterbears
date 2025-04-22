@@ -8,7 +8,7 @@
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
   const supabaseUrl = 'https://cmbmfdtmofhidxjugtcd.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q';
+  const supabaseKey = 'YOUR_SUPABASE_KEY'; // Replace with a public or anon key
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const { data: { session } } = await supabase.auth.getSession();
@@ -53,9 +53,13 @@
 
     document.getElementById('profile-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      
       const full_name = document.getElementById('full_name').value;
       const username = document.getElementById('username').value;
       const bio = document.getElementById('bio').value;
+
+      const submitButton = document.querySelector("button[type='submit']");
+      submitButton.disabled = true; // Disable the button
 
       const { error: updateError } = await supabase
         .from('profiles')
@@ -64,6 +68,8 @@
 
       document.getElementById('status-message').textContent =
         updateError ? 'Failed to update profile' : 'Profile updated successfully!';
+
+      submitButton.disabled = false; // Re-enable the button
     });
   }
 </script>
