@@ -8,7 +8,7 @@
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
   const supabaseUrl = 'https://cmbmfdtmofhidxjugtcd.supabase.co';
-  const supabaseKey = 'YOUR_SUPABASE_KEY'; // Replace with a public or anon key
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q'; // Replace with a public or anon key
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const { data: { session } } = await supabase.auth.getSession();
