@@ -104,21 +104,21 @@ If you are logged in, you can view and edit your profile below. If you're not lo
 
       if (!profile) {
   const { data: newProfile, error: insertError } = await supabase
-    .from('profiles')
-    .insert([
-      {
-        user_id: userId,
-        name: '',
-        full_name: '',
-        email: '',
-        bio: '',
-        location: '',
-        social_links: {},
-        profile_image_url: ''
-      }
-    ])
-    .select()
-    .single();
+  .from('profiles')
+  .insert([
+    {
+      user_id: userId,
+      name: '',
+      email: '',
+      bio: '',
+      location: '',
+      social_links: {},
+      profile_image_url: ''
+    }
+  ])
+  .select()
+  .single();
+
 
   if (insertError) {
     console.error('Error creating profile:', insertError);
