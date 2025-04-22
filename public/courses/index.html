@@ -72,40 +72,74 @@
       </footer>
     </div>
 
+
     <script type="module">
       import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-      
+    
       const supabase = createClient(
         'https://cmbmfdtmofhidxjugtcd.supabase.co',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q' // ← replace with your actual public anon key
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtYm1mZHRtb2ZoaWR4anVndGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNzEwMTAsImV4cCI6MjA2MDg0NzAxMH0.y1XJNaw380hgC7Mkkl79ugvXZUfjRqMyMsnEfUXmQ8Q' // Replace with your actual public anon key
       );
-
+    
+      // Function to update the leaderboard by adding time spent
+      async function addTimeToLeaderboard(userId, timeSpent) {
+        // Retrieve the existing leaderboard entry for the user
+        const { data: existingEntry, error: fetchError } = await supabase
+          .from('leaderboard')
+          .select('time_spent')
+          .eq('user_id', userId)
+          .single(); // Fetch single entry
+    
+        if (fetchError) {
+          console.error('Error fetching leaderboard entry:', fetchError);
+          return;
+        }
+    
+        const newTimeSpent = existingEntry ? existingEntry.time_spent + timeSpent : timeSpent;
+    
+        // Update leaderboard by adding time spent
+        const { data, error } = await supabase
+          .from('leaderboard')
+          .upsert([
+            {
+              user_id: userId,
+              time_spent: newTimeSpent,
+            }
+          ], { onConflict: ['user_id'] });  // Update if the user exists, insert if it doesn't
+    
+        if (error) {
+          console.error('Error updating leaderboard:', error);
+        } else {
+          console.log('Leaderboard updated successfully:', data);
+        }
+      }
+    
+      // Function to load the leaderboard
       async function loadLeaderboard() {
         const leaderboardContainer = document.getElementById('leaderboard-table');
-
+    
         const { data, error } = await supabase
-          .from('leaderboard_with_usernames')
+          .from('leaderboard')
           .select('*')
           .order('time_spent', { ascending: false })
           .limit(20);
-
+    
         if (error) {
           leaderboardContainer.innerHTML = '<p style="color:red;">Failed to load leaderboard.</p>';
           return;
         }
-
+    
         if (!data || data.length === 0) {
           leaderboardContainer.innerHTML = '<p>No leaderboard entries found.</p>';
           return;
         }
-
+    
         const table = `
           <table style="width:100%; border-collapse: collapse;">
             <thead>
               <tr>
                 <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Rank</th>
                 <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Username</th>
-                <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Pages Read</th>
                 <th style="border-bottom: 2px solid #ccc; padding: 0.5rem;">Time Spent (s)</th>
               </tr>
             </thead>
@@ -114,17 +148,43 @@
                 <tr>
                   <td style="padding: 0.5rem;">${i + 1}</td>
                   <td style="padding: 0.5rem;">${entry.username || 'Anonymous'}</td>
-                  <td style="padding: 0.5rem;">${entry.pages_read}</td>
                   <td style="padding: 0.5rem;">${entry.time_spent}</td>
                 </tr>`).join('')}
             </tbody>
           </table>
         `;
-
+    
         leaderboardContainer.innerHTML = table;
       }
-
+    
+      // Track user time on the page (in seconds)
+      let startTime = Date.now();
+    
+      // Function to calculate time spent and update leaderboard on page unload
+      async function calculateAndUpdateTimeSpent() {
+        // Get logged-in user's information
+        const user = supabase.auth.user(); // This retrieves the logged-in user's session
+    
+        if (user) {
+          const userId = user.id; // The logged-in user's ID
+          const endTime = Date.now();
+          const timeSpent = Math.floor((endTime - startTime) / 1000);  // Time spent in seconds
+    
+          // Call addTimeToLeaderboard to add time spent
+          addTimeToLeaderboard(userId, timeSpent);
+        } else {
+          console.log("User is not logged in.");
+        }
+      }
+    
+      // Call addTimeToLeaderboard when the user leaves the page or session ends
+      window.addEventListener('beforeunload', calculateAndUpdateTimeSpent);
+    
+      // Load the leaderboard data on page load
       loadLeaderboard();
     </script>
+    
+
+
   </body>
 </html>
