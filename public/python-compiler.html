@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Compiler</title>
+  <link rel="stylesheet" href="/css/smigle.css">
+</head>
+<body>
+  <div id="root">
+    <div style="text-align:center; margin: 2rem 0;">
+      <a href="/" style="display:inline-block;padding:0.75rem 2rem;background:#2d2d2d;color:#fff;border-radius:6px;text-decoration:none;font-size:1.1rem;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:background 0.2s;">Back to Home</a>
+    </div>
+    <h1 class="title" style="text-align:center;">Python Compiler</h1>
+    <form id="codeForm" style="max-width:600px;margin:2rem auto;">
+      <label for="code">Write your Python code:</label>
+      <textarea id="code" rows="10" cols="60" style="width:100%;margin-bottom:1rem;"></textarea>
+      <label for="input">Test Input:</label>
+      <input type="text" id="input" placeholder="Optional input" style="width:100%;margin-bottom:1rem;">
+      <button type="button" onclick="submitCode()" class="button" style="width:100%;">Run Code</button>
+    </form>
+    <p style="font-weight:500;">Output:</p>
+    <pre id="output" style="background:#181a1b;color:#8ab4f8;padding:1rem;border-radius:8px;min-height:2rem;"></pre>
+  </div>
+  <script src="/js/judge0.js"></script>
+  <script>
+    // Force Python as language
+    window.onload = function() {
+      window.language = "71";
+    };
+    function submitCode() {
+      const sourceCode = document.getElementById("code").value;
+      const input = document.getElementById("input").value;
+      const requestData = {
+        language_id: window.language,
+        source_code: btoa(sourceCode),
+        stdin: btoa(input)
+      };
+      fetch("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-RapidAPI-Key": "f510fe5c0amsh1f84026d6670014p1f7782jsn56ec1abd5c11"
+        },
+        body: JSON.stringify(requestData)
+      })
+      .then(response => response.json())
+      .then(result => checkStatus(result.token));
+    }
+    function checkStatus(token) {
+      setTimeout(() => {
+        fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
+          headers: { "X-RapidAPI-Key": "f510fe5c0amsh1f84026d6670014p1f7782jsn56ec1abd5c11" }
+        })
+        .then(response => response.json())
+        .then(result => {
+          document.getElementById("output").textContent = atob(result.stdout || result.stderr || "No output");
+        });
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
