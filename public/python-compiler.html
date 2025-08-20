@@ -12,17 +12,16 @@
       <a href="/" style="display:inline-block;padding:0.75rem 2rem;background:#2d2d2d;color:#fff;border-radius:6px;text-decoration:none;font-size:1.1rem;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:background 0.2s;">Back to Home</a>
     </div>
     <h1 class="title" style="text-align:center;">Python Compiler</h1>
-    <form id="codeForm" style="max-width:600px;margin:2rem auto;">
-      <label for="code">Write your Python code:</label>
-      <textarea id="code" rows="10" cols="60" style="width:100%;margin-bottom:1rem;"></textarea>
-      <div id="output-area" style="background:#181a1b;color:#8ab4f8;padding:1rem;border-radius:8px;min-height:3rem;">
-        <label for="input" style="color:#b0b0b0;">Test Input:</label>
-        <input type="text" id="input" placeholder="Optional input" style="width:100%;margin-bottom:1rem;background:#23272a;color:#e3e3e3;border:1px solid #333;border-radius:6px;padding:8px 12px;">
-        <button type="button" id="runBtn" onclick="submitCode()" class="button" style="width:100%;margin-top:0.5rem;">Run Code</button>
-        <div id="output-label" style="font-weight:500;margin-top:1.2rem;">Output:</div>
-        <pre id="output" style="background:none;color:#8ab4f8;padding:0;border-radius:0;min-height:2rem;margin:0;"></pre>
+    <div id="interpreter-container" style="max-width:700px;margin:2.5rem auto;padding:2rem 1.5rem;background:#22232a;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,0.18);">
+      <div style="font-size:1.3rem;font-weight:600;color:#fff;margin-bottom:1.2rem;">Online Python Interpreter</div>
+      <textarea id="code" rows="10" style="width:100%;font-size:1.08rem;background:#181a1b;color:#e3e3e3;border:1.5px solid #333;border-radius:8px;padding:1rem;margin-bottom:1rem;resize:vertical;" placeholder="# Write your Python code here\nprint('Hello, world!')"></textarea>
+      <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1rem;">
+        <input type="text" id="input" placeholder="Optional input (stdin)" style="flex:1;background:#23272a;color:#e3e3e3;border:1px solid #333;border-radius:6px;padding:8px 12px;font-size:1rem;">
+        <button type="button" id="runBtn" onclick="submitCode()" class="button" style="min-width:120px;">Run ▶</button>
       </div>
-    </form>
+      <div id="output-label" style="font-weight:500;margin-bottom:0.5rem;color:#b0b0b0;">Output:</div>
+      <pre id="output" style="background:#181a1b;color:#8ab4f8;padding:1rem;border-radius:8px;min-height:2rem;margin:0;font-size:1.08rem;overflow-x:auto;"></pre>
+    </div>
   </div>
   <script src="/js/judge0.js"></script>
   <script>
@@ -30,6 +29,14 @@
     window.onload = function() {
       window.language = "71";
     };
+    function decodeBase64OrPlain(str) {
+      try {
+        // Try to decode base64, fallback to plain text
+        return atob(str);
+      } catch (e) {
+        return str;
+      }
+    }
     function submitCode() {
       const runBtn = document.getElementById("runBtn");
       runBtn.disabled = true;
@@ -65,11 +72,11 @@
             checkStatus(token);
           } else {
             runBtn.disabled = false;
-            runBtn.textContent = "Run Code";
+            runBtn.textContent = "Run ▶";
             let output = "";
-            if (result.stdout) output = atob(result.stdout);
-            else if (result.stderr) output = atob(result.stderr);
-            else if (result.compile_output) output = atob(result.compile_output);
+            if (result.stdout) output = decodeBase64OrPlain(result.stdout);
+            else if (result.stderr) output = decodeBase64OrPlain(result.stderr);
+            else if (result.compile_output) output = decodeBase64OrPlain(result.compile_output);
             else if (result.message) output = result.message;
             else output = "No output";
             document.getElementById("output").textContent = output;
