@@ -15,12 +15,14 @@
     <form id="codeForm" style="max-width:600px;margin:2rem auto;">
       <label for="code">Write your Python code:</label>
       <textarea id="code" rows="10" cols="60" style="width:100%;margin-bottom:1rem;"></textarea>
-      <label for="input">Test Input:</label>
-      <input type="text" id="input" placeholder="Optional input" style="width:100%;margin-bottom:1rem;">
-      <button type="button" onclick="submitCode()" class="button" style="width:100%;">Run Code</button>
+      <div id="output-area" style="background:#181a1b;color:#8ab4f8;padding:1rem;border-radius:8px;min-height:3rem;">
+        <label for="input" style="color:#b0b0b0;">Test Input:</label>
+        <input type="text" id="input" placeholder="Optional input" style="width:100%;margin-bottom:1rem;background:#23272a;color:#e3e3e3;border:1px solid #333;border-radius:6px;padding:8px 12px;">
+        <button type="button" id="runBtn" onclick="submitCode()" class="button" style="width:100%;margin-top:0.5rem;">Run Code</button>
+        <div id="output-label" style="font-weight:500;margin-top:1.2rem;">Output:</div>
+        <pre id="output" style="background:none;color:#8ab4f8;padding:0;border-radius:0;min-height:2rem;margin:0;"></pre>
+      </div>
     </form>
-    <p style="font-weight:500;">Output:</p>
-    <pre id="output" style="background:#181a1b;color:#8ab4f8;padding:1rem;border-radius:8px;min-height:2rem;"></pre>
   </div>
   <script src="/js/judge0.js"></script>
   <script>
@@ -29,6 +31,10 @@
       window.language = "71";
     };
     function submitCode() {
+      const runBtn = document.getElementById("runBtn");
+      runBtn.disabled = true;
+      runBtn.textContent = "Running...";
+      document.getElementById("output").textContent = "";
       const sourceCode = document.getElementById("code").value;
       const input = document.getElementById("input").value;
       const requestData = {
@@ -54,9 +60,22 @@
         })
         .then(response => response.json())
         .then(result => {
-          document.getElementById("output").textContent = atob(result.stdout || result.stderr || "No output");
+          const runBtn = document.getElementById("runBtn");
+          if (result.status && result.status.id <= 2) {
+            checkStatus(token);
+          } else {
+            runBtn.disabled = false;
+            runBtn.textContent = "Run Code";
+            let output = "";
+            if (result.stdout) output = atob(result.stdout);
+            else if (result.stderr) output = atob(result.stderr);
+            else if (result.compile_output) output = atob(result.compile_output);
+            else if (result.message) output = result.message;
+            else output = "No output";
+            document.getElementById("output").textContent = output;
+          }
         });
-      }, 2000);
+      }, 1200);
     }
   </script>
 </body>

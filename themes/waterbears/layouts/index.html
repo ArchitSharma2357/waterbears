@@ -1,15 +1,8 @@
 {{ define "main" }}
 	<main>
-				<div style="display:flex;justify-content:center;margin:2.5rem 0;gap:1.5rem;flex-wrap:wrap;">
-					<a href="/python-compiler/" style="display:flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(90deg,#4f8cff 0%,#235390 100%);color:#fff;border-radius:8px;text-decoration:none;font-size:1.15rem;font-weight:600;box-shadow:0 4px 16px rgba(79,140,255,0.10);transition:background 0.2s,box-shadow 0.2s;letter-spacing:0.02em;">
-						<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h.01M12 14h.01M16 10h.01"/></svg>
-						Try the Python Compiler (Hugo)
-					</a>
-					<a href="/python-compiler.html" style="display:flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(90deg,#23272a 0%,#4f8cff 100%);color:#fff;border-radius:8px;text-decoration:none;font-size:1.15rem;font-weight:600;box-shadow:0 4px 16px rgba(79,140,255,0.10);transition:background 0.2s,box-shadow 0.2s;letter-spacing:0.02em;">
-						<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h.01M12 14h.01M16 10h.01"/></svg>
-						Try the Python Compiler (Direct)
-					</a>
-				</div>
+				<a href="/python-compiler.html" title="Python Compiler" style="position:fixed;top:24px;right:24px;z-index:1000;display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#23272a 0%,#4f8cff 100%);color:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(79,140,255,0.10);transition:background 0.2s,box-shadow 0.2s;text-decoration:none;font-size:1.5rem;">
+					<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h.01M12 14h.01M16 10h.01"/></svg>
+				</a>
 		{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 		{{ range $paginator.Pages }}
 			{{ .Render "summary" }}
