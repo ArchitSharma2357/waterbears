@@ -1,5 +1,8 @@
 {{ define "main" }}
 	<main>
+		<div style="text-align:center; margin: 2rem 0;">
+			<a href="/python-compiler/" style="display:inline-block;padding:0.75rem 2rem;background:#2d2d2d;color:#fff;border-radius:6px;text-decoration:none;font-size:1.2rem;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:background 0.2s;">Try the Python Compiler</a>
+		</div>
 		{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 		{{ range $paginator.Pages }}
 			{{ .Render "summary" }}
