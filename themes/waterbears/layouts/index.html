@@ -1,8 +1,11 @@
 {{ define "main" }}
 	<main>
-		<div style="text-align:center; margin: 2rem 0;">
-			<a href="/python-compiler/" style="display:inline-block;padding:0.75rem 2rem;background:#2d2d2d;color:#fff;border-radius:6px;text-decoration:none;font-size:1.2rem;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:background 0.2s;">Try the Python Compiler</a>
-		</div>
+			<div style="display:flex;justify-content:center;margin:2.5rem 0;">
+				<a href="/python-compiler/" style="display:flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(90deg,#4f8cff 0%,#235390 100%);color:#fff;border-radius:8px;text-decoration:none;font-size:1.15rem;font-weight:600;box-shadow:0 4px 16px rgba(79,140,255,0.10);transition:background 0.2s,box-shadow 0.2s;letter-spacing:0.02em;">
+					<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h.01M12 14h.01M16 10h.01"/></svg>
+					Try the Python Compiler
+				</a>
+			</div>
 		{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 		{{ range $paginator.Pages }}
 			{{ .Render "summary" }}
