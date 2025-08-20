@@ -26,25 +26,154 @@
 }
 #brand .icon {
   width: 75px;
+
+body {
+  background: #181a1b;
+  color: #e3e3e3;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 24px 10px 10px 10px;
+  background: #23272a;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+}
+#brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#brand a {
+  color: #8ab4f8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+#brand a:hover {
+  color: #fff;
+}
+#brand h1, #brand h3 {
+  margin: 0;
+}
+#brand h1 {
+  font-size: 30px;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+#brand h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #b0b0b0;
+}
+#brand .icon {
+  width: 75px;
 }
 footer {
   margin-top: 30px;
+  color: #888;
+  border-top: 1px solid #222;
+  padding-top: 1.5rem;
+  font-size: 0.95rem;
 }
 header nav {
   margin: 15px 0;
 }
 h1.title {
   margin: 1.3rem 0 0 0;
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: 600;
 }
 h3.subtitle {
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
+  color: #b0b0b0;
 }
 div.post-meta {
   margin-top: 1.3rem;
+  color: #aaa;
 }
-
-/* Medium devices (tablets, 768px and up) */
+#postsByDate  {
+  list-style: none;
+}
+#postsByDate .date {
+  width: 60px;
+}
+#postsByDate div, #postsInOneGroup div {
+  display: inline-block;
+}
+#terms {
+  list-style: none;
+}
+#terms .term {
+  background-color: #23272a;
+  color: #8ab4f8;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 2px;
+  padding: 8px 14px;
+  font-size: 1rem;
+  border: 1px solid #333;
+}
+.login-button, .signup-button {
+  display: inline-block;
+  padding: 10px 18px;
+  background: linear-gradient(90deg,#4f8cff 0%,#235390 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  transition: background 0.2s,box-shadow 0.2s;
+}
+.login-button:hover, .signup-button:hover {
+  background: #235390;
+  box-shadow: 0 4px 16px rgba(79,140,255,0.18);
+}
+/* General UI improvements */
+a, a:visited {
+  color: #8ab4f8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #fff;
+}
+input, textarea, select {
+  background: #23272a;
+  color: #e3e3e3;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border: 1.5px solid #4f8cff;
+}
+button, .button {
+  background: linear-gradient(90deg,#4f8cff 0%,#235390 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  transition: background 0.2s,box-shadow 0.2s;
+}
+button:hover, .button:hover {
+  background: #235390;
+  box-shadow: 0 4px 16px rgba(79,140,255,0.18);
+}
 @media (min-width: 768px) {
   #root {
     margin-top: 25px;
@@ -62,46 +191,4 @@ div.post-meta {
   #brand h3 {
     font-size: 25px;
   }
-}
-#postsByDate  {
-  list-style: none;
-}
-#postsByDate .date {
-  width: 60px;
-}
-#postsByDate div, #postsInOneGroup div {
-  display: inline-block;
-}
-#terms {
-  list-style: none;
-}
-#terms .term {
-  background-color: #ddd;
-  border-radius: 10px;
-  display: inline-block;
-  margin: 2px;
-  padding: 8px;
-}
-
-/* Container to align buttons to the top-right */
-.login-button-container, .signup-button-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  margin-left: 10px;
-}
-
-/* Style for the Login button */
-.login-button, .signup-button {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.login-button:hover, .signup-button:hover {
-  background-color: #0056b3;
 }
