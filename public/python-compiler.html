@@ -18,9 +18,10 @@
       <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1rem;">
         <input type="text" id="input" placeholder="Optional input (stdin)" style="flex:1;background:#23272a;color:#e3e3e3;border:1px solid #333;border-radius:6px;padding:8px 12px;font-size:1rem;">
         <button type="button" id="runBtn" onclick="submitCode()" class="button" style="min-width:120px;">Run ▶</button>
+        <button type="button" id="clearBtn" onclick="clearTranscript()" class="button" style="min-width:80px;background:#444;margin-left:0.5rem;">Clear</button>
       </div>
-      <div id="output-label" style="font-weight:500;margin-bottom:0.5rem;color:#b0b0b0;">Output:</div>
-      <pre id="output" style="background:#181a1b;color:#8ab4f8;padding:1rem;border-radius:8px;min-height:2rem;margin:0;font-size:1.08rem;overflow-x:auto;"></pre>
+      <div id="output-label" style="font-weight:500;margin-bottom:0.5rem;color:#b0b0b0;">Session Transcript:</div>
+      <div id="transcript" style="background:#181a1b;color:#8ab4f8;padding:1rem;border-radius:8px;min-height:2rem;margin:0;font-size:1.08rem;overflow-y:auto;max-height:350px;"></div>
     </div>
   </div>
   <script src="/js/judge0.js"></script>
@@ -31,58 +32,91 @@
     };
     function decodeBase64OrPlain(str) {
       try {
-        // Try to decode base64, fallback to plain text
         return atob(str);
       } catch (e) {
         return str;
       }
     }
-    function submitCode() {
+
+    async function submitCode() {
       const runBtn = document.getElementById("runBtn");
       runBtn.disabled = true;
       runBtn.textContent = "Running...";
-      document.getElementById("output").textContent = "";
-      const sourceCode = document.getElementById("code").value;
+      const code = document.getElementById("code").value;
       const input = document.getElementById("input").value;
       const requestData = {
         language_id: window.language,
-        source_code: btoa(sourceCode),
+        source_code: btoa(code),
         stdin: btoa(input)
       };
-      fetch("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-RapidAPI-Key": "f510fe5c0amsh1f84026d6670014p1f7782jsn56ec1abd5c11"
-        },
-        body: JSON.stringify(requestData)
-      })
-      .then(response => response.json())
-      .then(result => checkStatus(result.token));
-    }
-    function checkStatus(token) {
-      setTimeout(() => {
-        fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
-          headers: { "X-RapidAPI-Key": "f510fe5c0amsh1f84026d6670014p1f7782jsn56ec1abd5c11" }
-        })
-        .then(response => response.json())
-        .then(result => {
-          const runBtn = document.getElementById("runBtn");
-          if (result.status && result.status.id <= 2) {
-            checkStatus(token);
-          } else {
-            runBtn.disabled = false;
-            runBtn.textContent = "Run ▶";
-            let output = "";
-            if (result.stdout) output = decodeBase64OrPlain(result.stdout);
-            else if (result.stderr) output = decodeBase64OrPlain(result.stderr);
-            else if (result.compile_output) output = decodeBase64OrPlain(result.compile_output);
-            else if (result.message) output = result.message;
-            else output = "No output";
-            document.getElementById("output").textContent = output;
-          }
+      let output = "";
+      try {
+        const submission = await fetch("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-RapidAPI-Key": "f510fe5c0amsh1f84026d6670014p1f7782jsn56ec1abd5c11"
+          },
+          body: JSON.stringify(requestData)
         });
-      }, 1200);
+        const submissionResult = await submission.json();
+        output = await checkStatus(submissionResult.token);
+      } catch (err) {
+        output = "Error: " + err.message;
+      } finally {
+        runBtn.disabled = false;
+        runBtn.textContent = "Run ▶";
+      }
+      appendTranscript(code, input, output);
+    }
+
+    function appendTranscript(code, input, output) {
+      const transcript = document.getElementById("transcript");
+      const block = document.createElement("div");
+      block.style.marginBottom = "1.5rem";
+      block.innerHTML =
+        `<div style='color:#b0b0b0;font-size:0.98rem;margin-bottom:0.2rem;'>Code:</div>` +
+        `<pre style='background:#23272a;color:#fff;padding:0.7rem;border-radius:6px;margin:0 0 0.5rem 0;font-size:1.01rem;'>${escapeHtml(code)}</pre>` +
+        (input ? `<div style='color:#b0b0b0;font-size:0.98rem;margin-bottom:0.2rem;'>Input:</div><pre style='background:#23272a;color:#8ab4f8;padding:0.5rem;border-radius:6px;margin:0 0 0.5rem 0;font-size:1.01rem;'>${escapeHtml(input)}</pre>` : "") +
+        `<div style='color:#b0b0b0;font-size:0.98rem;margin-bottom:0.2rem;'>Output:</div><pre style='background:#181a1b;color:#8ab4f8;padding:0.7rem;border-radius:6px;margin:0;font-size:1.01rem;'>${escapeHtml(output)}</pre>`;
+      transcript.appendChild(block);
+      transcript.scrollTop = transcript.scrollHeight;
+    }
+
+    function clearTranscript() {
+      document.getElementById("transcript").innerHTML = "";
+    }
+
+    function escapeHtml(text) {
+      if (!text) return "";
+      return text.replace(/[&<>"']/g, function(m) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'})[m];
+      });
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function checkStatus(token) {
+      while (true) {
+        await sleep(1200);
+        const res = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
+          headers: { "X-RapidAPI-Key": "f510fe5c0amsh1f84026d6670014p1f7782jsn56ec1abd5c11" }
+        });
+        const result = await res.json();
+        if (result.status && result.status.id <= 2) {
+          continue;
+        } else {
+          let output = "";
+          if (result.stdout) output = decodeBase64OrPlain(result.stdout);
+          else if (result.stderr) output = decodeBase64OrPlain(result.stderr);
+          else if (result.compile_output) output = decodeBase64OrPlain(result.compile_output);
+          else if (result.message) output = result.message;
+          else output = "No output";
+          return output;
+        }
+      }
     }
   </script>
 </body>
