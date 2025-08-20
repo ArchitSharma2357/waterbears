@@ -1,7 +1,6 @@
-baseURL = "https://waterbears.in/"
 languageCode = "en-us"
 theme = "waterbears"
-title = "WaterBears"
+title = "vault dweller"
 
 [menu]
   [[menu.main]]
@@ -32,7 +31,7 @@ title = "WaterBears"
 
 [params]
   abbrDateFmt = "Jan 2"
-  author = "WaterBears"
+  author = "vault dweller"
   brandIconFile = "images/brandIcon.svg"
   dateFmt = "2006-01-02"
   readingSpeed = 550
